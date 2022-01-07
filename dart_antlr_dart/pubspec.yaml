@@ -1,0 +1,11 @@
+name: dart_antlr_dart
+version: 1.0.0
+
+environment:
+  sdk: '>=2.15.0-0 <3.0.0'
+
+dependencies:
+  antlr4: 4.9.3
+
+dev_dependencies:
+  extra_pedantic: ^1.5.0
