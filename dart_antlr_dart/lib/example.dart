@@ -1,34 +1,42 @@
 import 'package:antlr4/antlr4.dart';
+import 'package:dart_antlr_dart/grammars/grammar.dart';
+import 'package:dart_antlr_dart/grammars/local/export.dart';
 
-import 'generated/DartLexer.dart';
-import 'generated/DartParser.dart';
+import 'grammars/master/export.dart';
 
+// TODO run against dart tests
+// Run antlr -Dlanguage=Dart Dart.g4.
 void main() async {
-  run(
-    code: """
+  final code = """
 part of lib;
 
 @override
 int? i;
-""",
+""";
+  final local = localGrammar.build(code);
+  final master = masterGrammar.build(code);
+  print("Running master...");
+  run(
+    grammar: master,
   );
+  print("...Done");
+  print("");
+  print("Running Local...");
+  run(
+    grammar: local,
+  );
+  print("...Done");
 }
 
 void run({
-  required final String code,
+  required final DartGrammar grammar,
 }) {
-  DartLexer.checkVersion();
-  DartParser.checkVersion();
-  final input = InputStream.fromString(
-    code,
-  );
-  final lexer = DartLexer(input);
-  final tokens = CommonTokenStream(lexer);
-  final parser = DartParser(tokens);
-  parser.addErrorListener(DiagnosticErrorListener());
-  parser.buildParseTree = true;
-  final tree = parser.partDeclaration();
-  ParseTreeWalker.DEFAULT.walk(TreeShapeListener(), tree);
+    grammar.checkVersion();
+    grammar.parser;
+    ParseTreeWalker.DEFAULT.walk(
+      TreeShapeListener(),
+      grammar.partDeclaration(),
+    );
 }
 
 class TreeShapeListener implements ParseTreeListener {
@@ -37,8 +45,9 @@ class TreeShapeListener implements ParseTreeListener {
   @override
   void enterEveryRule(
     final ParserRuleContext ctx,
-  ) =>
-      print(ctx.text);
+  ) {
+    // print(ctx.text);
+  }
 
   @override
   void exitEveryRule(
@@ -48,7 +57,9 @@ class TreeShapeListener implements ParseTreeListener {
   @override
   void visitErrorNode(
     final ErrorNode node,
-  ) {}
+  ) {
+    print("Error: " + node.toString());
+  }
 
   @override
   void visitTerminal(

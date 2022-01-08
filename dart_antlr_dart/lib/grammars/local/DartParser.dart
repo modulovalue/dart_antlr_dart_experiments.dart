@@ -1,10 +1,11 @@
-// Generated from Dart.g by ANTLR 4.9.3
-// ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
+// Generated from Dart.g4 by ANTLR 4.9.3
+// ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes, file_names, directives_ordering, prefer_final_locals, avoid_catching_errors, unnecessary_parenthesis, prefer_const_declarations
+
 import 'package:antlr4/antlr4.dart';
 
 import 'DartListener.dart';
 import 'DartBaseListener.dart';
-const int RULE_libraryDefinition = 0, RULE_topLevelDefinition = 1, RULE_declaredIdentifier = 2, 
+const int RULE_libraryDefinition = 0, RULE_topLevelDefinition = 1, RULE_declaredIdentifier = 2,
           RULE_finalConstVarOrType = 3, RULE_finalVarOrType = 4, RULE_varOrType = 5, 
           RULE_initializedIdentifier = 6, RULE_initializedIdentifierList = 7, 
           RULE_functionSignature = 8, RULE_functionBodyPrefix = 9, RULE_functionBody = 10, 
@@ -261,7 +262,7 @@ class DartParser extends Parser {
   }
 
   @override
-  String get grammarFileName => 'Dart.g';
+  String get grammarFileName => 'Dart.g4';
 
   @override
   String get serializedATN => _serializedATN;
@@ -272,7 +273,7 @@ class DartParser extends Parser {
   }
 
 
-    String? filePath = null;
+    String? filePath ;
     bool errorHasOccurred = false;
 
     /// Must be invoked before the first error is reported for a library.
@@ -318,7 +319,7 @@ class DartParser extends Parser {
   }
 
   LibraryDefinitionContext libraryDefinition() {
-    dynamic _localctx = LibraryDefinitionContext(context, state);
+    var _localctx = LibraryDefinitionContext(context, state);
     enterRule(_localctx, 0, RULE_libraryDefinition);
     try {
       int _alt;
@@ -398,7 +399,7 @@ class DartParser extends Parser {
   }
 
   TopLevelDefinitionContext topLevelDefinition() {
-    dynamic _localctx = TopLevelDefinitionContext(context, state);
+    var _localctx = TopLevelDefinitionContext(context, state);
     enterRule(_localctx, 2, RULE_topLevelDefinition);
     int _la;
     try {
@@ -583,7 +584,7 @@ class DartParser extends Parser {
   }
 
   DeclaredIdentifierContext declaredIdentifier() {
-    dynamic _localctx = DeclaredIdentifierContext(context, state);
+    var _localctx = DeclaredIdentifierContext(context, state);
     enterRule(_localctx, 4, RULE_declaredIdentifier);
     try {
       enterOuterAlt(_localctx, 1);
@@ -610,7 +611,7 @@ class DartParser extends Parser {
   }
 
   FinalConstVarOrTypeContext finalConstVarOrType() {
-    dynamic _localctx = FinalConstVarOrTypeContext(context, state);
+    var _localctx = FinalConstVarOrTypeContext(context, state);
     enterRule(_localctx, 6, RULE_finalConstVarOrType);
     int _la;
     try {
@@ -676,7 +677,7 @@ class DartParser extends Parser {
   }
 
   FinalVarOrTypeContext finalVarOrType() {
-    dynamic _localctx = FinalVarOrTypeContext(context, state);
+    var _localctx = FinalVarOrTypeContext(context, state);
     enterRule(_localctx, 8, RULE_finalVarOrType);
     try {
       state = 567;
@@ -712,7 +713,7 @@ class DartParser extends Parser {
   }
 
   VarOrTypeContext varOrType() {
-    dynamic _localctx = VarOrTypeContext(context, state);
+    var _localctx = VarOrTypeContext(context, state);
     enterRule(_localctx, 10, RULE_varOrType);
     try {
       state = 571;
@@ -740,7 +741,7 @@ class DartParser extends Parser {
   }
 
   InitializedIdentifierContext initializedIdentifier() {
-    dynamic _localctx = InitializedIdentifierContext(context, state);
+    var _localctx = InitializedIdentifierContext(context, state);
     enterRule(_localctx, 12, RULE_initializedIdentifier);
     int _la;
     try {
@@ -768,7 +769,7 @@ class DartParser extends Parser {
   }
 
   InitializedIdentifierListContext initializedIdentifierList() {
-    dynamic _localctx = InitializedIdentifierListContext(context, state);
+    var _localctx = InitializedIdentifierListContext(context, state);
     enterRule(_localctx, 14, RULE_initializedIdentifierList);
     int _la;
     try {
@@ -798,7 +799,7 @@ class DartParser extends Parser {
   }
 
   FunctionSignatureContext functionSignature() {
-    dynamic _localctx = FunctionSignatureContext(context, state);
+    var _localctx = FunctionSignatureContext(context, state);
     enterRule(_localctx, 16, RULE_functionSignature);
     try {
       enterOuterAlt(_localctx, 1);
@@ -825,7 +826,7 @@ class DartParser extends Parser {
   }
 
   FunctionBodyPrefixContext functionBodyPrefix() {
-    dynamic _localctx = FunctionBodyPrefixContext(context, state);
+    var _localctx = FunctionBodyPrefixContext(context, state);
     enterRule(_localctx, 18, RULE_functionBodyPrefix);
     int _la;
     try {
@@ -882,7 +883,7 @@ class DartParser extends Parser {
   }
 
   FunctionBodyContext functionBody() {
-    dynamic _localctx = FunctionBodyContext(context, state);
+    var _localctx = FunctionBodyContext(context, state);
     enterRule(_localctx, 20, RULE_functionBody);
     try {
       state = 634;
@@ -958,7 +959,7 @@ class DartParser extends Parser {
   }
 
   BlockContext block() {
-    dynamic _localctx = BlockContext(context, state);
+    var _localctx = BlockContext(context, state);
     enterRule(_localctx, 22, RULE_block);
     try {
       enterOuterAlt(_localctx, 1);
@@ -979,7 +980,7 @@ class DartParser extends Parser {
   }
 
   FormalParameterPartContext formalParameterPart() {
-    dynamic _localctx = FormalParameterPartContext(context, state);
+    var _localctx = FormalParameterPartContext(context, state);
     enterRule(_localctx, 24, RULE_formalParameterPart);
     int _la;
     try {
@@ -1005,7 +1006,7 @@ class DartParser extends Parser {
   }
 
   FormalParameterListContext formalParameterList() {
-    dynamic _localctx = FormalParameterListContext(context, state);
+    var _localctx = FormalParameterListContext(context, state);
     enterRule(_localctx, 26, RULE_formalParameterList);
     int _la;
     try {
@@ -1070,7 +1071,7 @@ class DartParser extends Parser {
   }
 
   NormalFormalParametersContext normalFormalParameters() {
-    dynamic _localctx = NormalFormalParametersContext(context, state);
+    var _localctx = NormalFormalParametersContext(context, state);
     enterRule(_localctx, 28, RULE_normalFormalParameters);
     try {
       int _alt;
@@ -1102,7 +1103,7 @@ class DartParser extends Parser {
   }
 
   OptionalOrNamedFormalParametersContext optionalOrNamedFormalParameters() {
-    dynamic _localctx = OptionalOrNamedFormalParametersContext(context, state);
+    var _localctx = OptionalOrNamedFormalParametersContext(context, state);
     enterRule(_localctx, 30, RULE_optionalOrNamedFormalParameters);
     try {
       state = 676;
@@ -1132,7 +1133,7 @@ class DartParser extends Parser {
   }
 
   OptionalPositionalFormalParametersContext optionalPositionalFormalParameters() {
-    dynamic _localctx = OptionalPositionalFormalParametersContext(context, state);
+    var _localctx = OptionalPositionalFormalParametersContext(context, state);
     enterRule(_localctx, 32, RULE_optionalPositionalFormalParameters);
     int _la;
     try {
@@ -1177,7 +1178,7 @@ class DartParser extends Parser {
   }
 
   NamedFormalParametersContext namedFormalParameters() {
-    dynamic _localctx = NamedFormalParametersContext(context, state);
+    var _localctx = NamedFormalParametersContext(context, state);
     enterRule(_localctx, 34, RULE_namedFormalParameters);
     int _la;
     try {
@@ -1222,7 +1223,7 @@ class DartParser extends Parser {
   }
 
   NormalFormalParameterContext normalFormalParameter() {
-    dynamic _localctx = NormalFormalParameterContext(context, state);
+    var _localctx = NormalFormalParameterContext(context, state);
     enterRule(_localctx, 36, RULE_normalFormalParameter);
     try {
       enterOuterAlt(_localctx, 1);
@@ -1241,7 +1242,7 @@ class DartParser extends Parser {
   }
 
   NormalFormalParameterNoMetadataContext normalFormalParameterNoMetadata() {
-    dynamic _localctx = NormalFormalParameterNoMetadataContext(context, state);
+    var _localctx = NormalFormalParameterNoMetadataContext(context, state);
     enterRule(_localctx, 38, RULE_normalFormalParameterNoMetadata);
     try {
       state = 712;
@@ -1274,7 +1275,7 @@ class DartParser extends Parser {
   }
 
   FunctionFormalParameterContext functionFormalParameter() {
-    dynamic _localctx = FunctionFormalParameterContext(context, state);
+    var _localctx = FunctionFormalParameterContext(context, state);
     enterRule(_localctx, 40, RULE_functionFormalParameter);
     int _la;
     try {
@@ -1318,7 +1319,7 @@ class DartParser extends Parser {
   }
 
   SimpleFormalParameterContext simpleFormalParameter() {
-    dynamic _localctx = SimpleFormalParameterContext(context, state);
+    var _localctx = SimpleFormalParameterContext(context, state);
     enterRule(_localctx, 42, RULE_simpleFormalParameter);
     try {
       state = 730;
@@ -1354,7 +1355,7 @@ class DartParser extends Parser {
   }
 
   FieldFormalParameterContext fieldFormalParameter() {
-    dynamic _localctx = FieldFormalParameterContext(context, state);
+    var _localctx = FieldFormalParameterContext(context, state);
     enterRule(_localctx, 44, RULE_fieldFormalParameter);
     int _la;
     try {
@@ -1400,7 +1401,7 @@ class DartParser extends Parser {
   }
 
   DefaultFormalParameterContext defaultFormalParameter() {
-    dynamic _localctx = DefaultFormalParameterContext(context, state);
+    var _localctx = DefaultFormalParameterContext(context, state);
     enterRule(_localctx, 46, RULE_defaultFormalParameter);
     int _la;
     try {
@@ -1428,7 +1429,7 @@ class DartParser extends Parser {
   }
 
   DefaultNamedParameterContext defaultNamedParameter() {
-    dynamic _localctx = DefaultNamedParameterContext(context, state);
+    var _localctx = DefaultNamedParameterContext(context, state);
     enterRule(_localctx, 48, RULE_defaultNamedParameter);
     int _la;
     try {
@@ -1471,7 +1472,7 @@ class DartParser extends Parser {
   }
 
   TypeWithParametersContext typeWithParameters() {
-    dynamic _localctx = TypeWithParametersContext(context, state);
+    var _localctx = TypeWithParametersContext(context, state);
     enterRule(_localctx, 50, RULE_typeWithParameters);
     int _la;
     try {
@@ -1497,7 +1498,7 @@ class DartParser extends Parser {
   }
 
   ClassDeclarationContext classDeclaration() {
-    dynamic _localctx = ClassDeclarationContext(context, state);
+    var _localctx = ClassDeclarationContext(context, state);
     enterRule(_localctx, 52, RULE_classDeclaration);
     int _la;
     try {
@@ -1589,7 +1590,7 @@ class DartParser extends Parser {
   }
 
   SuperclassContext superclass() {
-    dynamic _localctx = SuperclassContext(context, state);
+    var _localctx = SuperclassContext(context, state);
     enterRule(_localctx, 54, RULE_superclass);
     try {
       enterOuterAlt(_localctx, 1);
@@ -1608,7 +1609,7 @@ class DartParser extends Parser {
   }
 
   MixinsContext mixins() {
-    dynamic _localctx = MixinsContext(context, state);
+    var _localctx = MixinsContext(context, state);
     enterRule(_localctx, 56, RULE_mixins);
     try {
       enterOuterAlt(_localctx, 1);
@@ -1627,7 +1628,7 @@ class DartParser extends Parser {
   }
 
   InterfacesContext interfaces() {
-    dynamic _localctx = InterfacesContext(context, state);
+    var _localctx = InterfacesContext(context, state);
     enterRule(_localctx, 58, RULE_interfaces);
     try {
       enterOuterAlt(_localctx, 1);
@@ -1646,7 +1647,7 @@ class DartParser extends Parser {
   }
 
   ClassMemberDefinitionContext classMemberDefinition() {
-    dynamic _localctx = ClassMemberDefinitionContext(context, state);
+    var _localctx = ClassMemberDefinitionContext(context, state);
     enterRule(_localctx, 60, RULE_classMemberDefinition);
     try {
       state = 808;
@@ -1678,7 +1679,7 @@ class DartParser extends Parser {
   }
 
   MixinApplicationClassContext mixinApplicationClass() {
-    dynamic _localctx = MixinApplicationClassContext(context, state);
+    var _localctx = MixinApplicationClassContext(context, state);
     enterRule(_localctx, 62, RULE_mixinApplicationClass);
     try {
       enterOuterAlt(_localctx, 1);
@@ -1701,7 +1702,7 @@ class DartParser extends Parser {
   }
 
   MixinDeclarationContext mixinDeclaration() {
-    dynamic _localctx = MixinDeclarationContext(context, state);
+    var _localctx = MixinDeclarationContext(context, state);
     enterRule(_localctx, 64, RULE_mixinDeclaration);
     int _la;
     try {
@@ -1766,7 +1767,7 @@ class DartParser extends Parser {
   }
 
   MixinMemberDefinitionContext mixinMemberDefinition() {
-    dynamic _localctx = MixinMemberDefinitionContext(context, state);
+    var _localctx = MixinMemberDefinitionContext(context, state);
     enterRule(_localctx, 66, RULE_mixinMemberDefinition);
     try {
       enterOuterAlt(_localctx, 1);
@@ -1783,7 +1784,7 @@ class DartParser extends Parser {
   }
 
   ExtensionDeclarationContext extensionDeclaration() {
-    dynamic _localctx = ExtensionDeclarationContext(context, state);
+    var _localctx = ExtensionDeclarationContext(context, state);
     enterRule(_localctx, 68, RULE_extensionDeclaration);
     int _la;
     try {
@@ -1840,7 +1841,7 @@ class DartParser extends Parser {
   }
 
   ExtensionMemberDefinitionContext extensionMemberDefinition() {
-    dynamic _localctx = ExtensionMemberDefinitionContext(context, state);
+    var _localctx = ExtensionMemberDefinitionContext(context, state);
     enterRule(_localctx, 70, RULE_extensionMemberDefinition);
     try {
       enterOuterAlt(_localctx, 1);
@@ -1857,7 +1858,7 @@ class DartParser extends Parser {
   }
 
   MethodSignatureContext methodSignature() {
-    dynamic _localctx = MethodSignatureContext(context, state);
+    var _localctx = MethodSignatureContext(context, state);
     enterRule(_localctx, 72, RULE_methodSignature);
     try {
       state = 880;
@@ -1936,7 +1937,7 @@ class DartParser extends Parser {
   }
 
   DeclarationContext declaration() {
-    dynamic _localctx = DeclarationContext(context, state);
+    var _localctx = DeclarationContext(context, state);
     enterRule(_localctx, 74, RULE_declaration);
     int _la;
     try {
@@ -2270,7 +2271,7 @@ class DartParser extends Parser {
   }
 
   StaticFinalDeclarationListContext staticFinalDeclarationList() {
-    dynamic _localctx = StaticFinalDeclarationListContext(context, state);
+    var _localctx = StaticFinalDeclarationListContext(context, state);
     enterRule(_localctx, 76, RULE_staticFinalDeclarationList);
     int _la;
     try {
@@ -2300,7 +2301,7 @@ class DartParser extends Parser {
   }
 
   StaticFinalDeclarationContext staticFinalDeclaration() {
-    dynamic _localctx = StaticFinalDeclarationContext(context, state);
+    var _localctx = StaticFinalDeclarationContext(context, state);
     enterRule(_localctx, 78, RULE_staticFinalDeclaration);
     try {
       enterOuterAlt(_localctx, 1);
@@ -2321,7 +2322,7 @@ class DartParser extends Parser {
   }
 
   OperatorSignatureContext operatorSignature() {
-    dynamic _localctx = OperatorSignatureContext(context, state);
+    var _localctx = OperatorSignatureContext(context, state);
     enterRule(_localctx, 80, RULE_operatorSignature);
     try {
       enterOuterAlt(_localctx, 1);
@@ -2350,7 +2351,7 @@ class DartParser extends Parser {
   }
 
   OperatorContext operator() {
-    dynamic _localctx = OperatorContext(context, state);
+    var _localctx = OperatorContext(context, state);
     enterRule(_localctx, 82, RULE_operator);
     try {
       state = 1016;
@@ -2394,7 +2395,7 @@ class DartParser extends Parser {
   }
 
   BinaryOperatorContext binaryOperator() {
-    dynamic _localctx = BinaryOperatorContext(context, state);
+    var _localctx = BinaryOperatorContext(context, state);
     enterRule(_localctx, 84, RULE_binaryOperator);
     try {
       state = 1024;
@@ -2442,7 +2443,7 @@ class DartParser extends Parser {
   }
 
   GetterSignatureContext getterSignature() {
-    dynamic _localctx = GetterSignatureContext(context, state);
+    var _localctx = GetterSignatureContext(context, state);
     enterRule(_localctx, 86, RULE_getterSignature);
     try {
       enterOuterAlt(_localctx, 1);
@@ -2469,7 +2470,7 @@ class DartParser extends Parser {
   }
 
   SetterSignatureContext setterSignature() {
-    dynamic _localctx = SetterSignatureContext(context, state);
+    var _localctx = SetterSignatureContext(context, state);
     enterRule(_localctx, 88, RULE_setterSignature);
     try {
       enterOuterAlt(_localctx, 1);
@@ -2498,7 +2499,7 @@ class DartParser extends Parser {
   }
 
   ConstructorSignatureContext constructorSignature() {
-    dynamic _localctx = ConstructorSignatureContext(context, state);
+    var _localctx = ConstructorSignatureContext(context, state);
     enterRule(_localctx, 90, RULE_constructorSignature);
     try {
       enterOuterAlt(_localctx, 1);
@@ -2517,7 +2518,7 @@ class DartParser extends Parser {
   }
 
   ConstructorNameContext constructorName() {
-    dynamic _localctx = ConstructorNameContext(context, state);
+    var _localctx = ConstructorNameContext(context, state);
     enterRule(_localctx, 92, RULE_constructorName);
     int _la;
     try {
@@ -2555,7 +2556,7 @@ class DartParser extends Parser {
   }
 
   RedirectionContext redirection() {
-    dynamic _localctx = RedirectionContext(context, state);
+    var _localctx = RedirectionContext(context, state);
     enterRule(_localctx, 94, RULE_redirection);
     int _la;
     try {
@@ -2597,7 +2598,7 @@ class DartParser extends Parser {
   }
 
   InitializersContext initializers() {
-    dynamic _localctx = InitializersContext(context, state);
+    var _localctx = InitializersContext(context, state);
     enterRule(_localctx, 96, RULE_initializers);
     int _la;
     try {
@@ -2629,7 +2630,7 @@ class DartParser extends Parser {
   }
 
   InitializerListEntryContext initializerListEntry() {
-    dynamic _localctx = InitializerListEntryContext(context, state);
+    var _localctx = InitializerListEntryContext(context, state);
     enterRule(_localctx, 98, RULE_initializerListEntry);
     try {
       state = 1081;
@@ -2685,7 +2686,7 @@ class DartParser extends Parser {
   }
 
   FieldInitializerContext fieldInitializer() {
-    dynamic _localctx = FieldInitializerContext(context, state);
+    var _localctx = FieldInitializerContext(context, state);
     enterRule(_localctx, 100, RULE_fieldInitializer);
     try {
       enterOuterAlt(_localctx, 1);
@@ -2716,7 +2717,7 @@ class DartParser extends Parser {
   }
 
   InitializerExpressionContext initializerExpression() {
-    dynamic _localctx = InitializerExpressionContext(context, state);
+    var _localctx = InitializerExpressionContext(context, state);
     enterRule(_localctx, 102, RULE_initializerExpression);
     try {
       state = 1093;
@@ -2744,7 +2745,7 @@ class DartParser extends Parser {
   }
 
   FactoryConstructorSignatureContext factoryConstructorSignature() {
-    dynamic _localctx = FactoryConstructorSignatureContext(context, state);
+    var _localctx = FactoryConstructorSignatureContext(context, state);
     enterRule(_localctx, 104, RULE_factoryConstructorSignature);
     int _la;
     try {
@@ -2774,7 +2775,7 @@ class DartParser extends Parser {
   }
 
   RedirectingFactoryConstructorSignatureContext redirectingFactoryConstructorSignature() {
-    dynamic _localctx = RedirectingFactoryConstructorSignatureContext(context, state);
+    var _localctx = RedirectingFactoryConstructorSignatureContext(context, state);
     enterRule(_localctx, 106, RULE_redirectingFactoryConstructorSignature);
     int _la;
     try {
@@ -2808,7 +2809,7 @@ class DartParser extends Parser {
   }
 
   ConstantConstructorSignatureContext constantConstructorSignature() {
-    dynamic _localctx = ConstantConstructorSignatureContext(context, state);
+    var _localctx = ConstantConstructorSignatureContext(context, state);
     enterRule(_localctx, 108, RULE_constantConstructorSignature);
     try {
       enterOuterAlt(_localctx, 1);
@@ -2829,7 +2830,7 @@ class DartParser extends Parser {
   }
 
   MixinApplicationContext mixinApplication() {
-    dynamic _localctx = MixinApplicationContext(context, state);
+    var _localctx = MixinApplicationContext(context, state);
     enterRule(_localctx, 110, RULE_mixinApplication);
     int _la;
     try {
@@ -2857,7 +2858,7 @@ class DartParser extends Parser {
   }
 
   EnumTypeContext enumType() {
-    dynamic _localctx = EnumTypeContext(context, state);
+    var _localctx = EnumTypeContext(context, state);
     enterRule(_localctx, 112, RULE_enumType);
     int _la;
     try {
@@ -2952,7 +2953,7 @@ class DartParser extends Parser {
   }
 
   EnumEntryContext enumEntry() {
-    dynamic _localctx = EnumEntryContext(context, state);
+    var _localctx = EnumEntryContext(context, state);
     enterRule(_localctx, 114, RULE_enumEntry);
     int _la;
     try {
@@ -3007,7 +3008,7 @@ class DartParser extends Parser {
   }
 
   TypeParameterContext typeParameter() {
-    dynamic _localctx = TypeParameterContext(context, state);
+    var _localctx = TypeParameterContext(context, state);
     enterRule(_localctx, 116, RULE_typeParameter);
     int _la;
     try {
@@ -3037,7 +3038,7 @@ class DartParser extends Parser {
   }
 
   TypeParametersContext typeParameters() {
-    dynamic _localctx = TypeParametersContext(context, state);
+    var _localctx = TypeParametersContext(context, state);
     enterRule(_localctx, 118, RULE_typeParameters);
     int _la;
     try {
@@ -3071,7 +3072,7 @@ class DartParser extends Parser {
   }
 
   MetadataContext metadata() {
-    dynamic _localctx = MetadataContext(context, state);
+    var _localctx = MetadataContext(context, state);
     enterRule(_localctx, 120, RULE_metadata);
     try {
       int _alt;
@@ -3101,7 +3102,7 @@ class DartParser extends Parser {
   }
 
   MetadatumContext metadatum() {
-    dynamic _localctx = MetadatumContext(context, state);
+    var _localctx = MetadatumContext(context, state);
     enterRule(_localctx, 122, RULE_metadatum);
     try {
       state = 1201;
@@ -3136,7 +3137,7 @@ class DartParser extends Parser {
   }
 
   ExpressionContext expression() {
-    dynamic _localctx = ExpressionContext(context, state);
+    var _localctx = ExpressionContext(context, state);
     enterRule(_localctx, 124, RULE_expression);
     try {
       state = 1211;
@@ -3183,7 +3184,7 @@ class DartParser extends Parser {
   }
 
   ExpressionWithoutCascadeContext expressionWithoutCascade() {
-    dynamic _localctx = ExpressionWithoutCascadeContext(context, state);
+    var _localctx = ExpressionWithoutCascadeContext(context, state);
     enterRule(_localctx, 126, RULE_expressionWithoutCascade);
     try {
       state = 1220;
@@ -3225,7 +3226,7 @@ class DartParser extends Parser {
   }
 
   ExpressionListContext expressionList() {
-    dynamic _localctx = ExpressionListContext(context, state);
+    var _localctx = ExpressionListContext(context, state);
     enterRule(_localctx, 128, RULE_expressionList);
     try {
       int _alt;
@@ -3257,7 +3258,7 @@ class DartParser extends Parser {
   }
 
   PrimaryContext primary() {
-    dynamic _localctx = PrimaryContext(context, state);
+    var _localctx = PrimaryContext(context, state);
     enterRule(_localctx, 130, RULE_primary);
     try {
       state = 1244;
@@ -3331,7 +3332,7 @@ class DartParser extends Parser {
   }
 
   ConstructorInvocationContext constructorInvocation() {
-    dynamic _localctx = ConstructorInvocationContext(context, state);
+    var _localctx = ConstructorInvocationContext(context, state);
     enterRule(_localctx, 132, RULE_constructorInvocation);
     try {
       state = 1257;
@@ -3373,7 +3374,7 @@ class DartParser extends Parser {
   }
 
   LiteralContext literal() {
-    dynamic _localctx = LiteralContext(context, state);
+    var _localctx = LiteralContext(context, state);
     enterRule(_localctx, 134, RULE_literal);
     try {
       state = 1266;
@@ -3426,7 +3427,7 @@ class DartParser extends Parser {
   }
 
   NullLiteralContext nullLiteral() {
-    dynamic _localctx = NullLiteralContext(context, state);
+    var _localctx = NullLiteralContext(context, state);
     enterRule(_localctx, 136, RULE_nullLiteral);
     try {
       enterOuterAlt(_localctx, 1);
@@ -3443,7 +3444,7 @@ class DartParser extends Parser {
   }
 
   NumericLiteralContext numericLiteral() {
-    dynamic _localctx = NumericLiteralContext(context, state);
+    var _localctx = NumericLiteralContext(context, state);
     enterRule(_localctx, 138, RULE_numericLiteral);
     int _la;
     try {
@@ -3468,7 +3469,7 @@ class DartParser extends Parser {
   }
 
   BooleanLiteralContext booleanLiteral() {
-    dynamic _localctx = BooleanLiteralContext(context, state);
+    var _localctx = BooleanLiteralContext(context, state);
     enterRule(_localctx, 140, RULE_booleanLiteral);
     int _la;
     try {
@@ -3493,7 +3494,7 @@ class DartParser extends Parser {
   }
 
   StringLiteralContext stringLiteral() {
-    dynamic _localctx = StringLiteralContext(context, state);
+    var _localctx = StringLiteralContext(context, state);
     enterRule(_localctx, 142, RULE_stringLiteral);
     try {
       int _alt;
@@ -3545,7 +3546,7 @@ class DartParser extends Parser {
   }
 
   StringLiteralWithoutInterpolationContext stringLiteralWithoutInterpolation() {
-    dynamic _localctx = StringLiteralWithoutInterpolationContext(context, state);
+    var _localctx = StringLiteralWithoutInterpolationContext(context, state);
     enterRule(_localctx, 144, RULE_stringLiteralWithoutInterpolation);
     int _la;
     try {
@@ -3571,7 +3572,7 @@ class DartParser extends Parser {
   }
 
   SetOrMapLiteralContext setOrMapLiteral() {
-    dynamic _localctx = SetOrMapLiteralContext(context, state);
+    var _localctx = SetOrMapLiteralContext(context, state);
     enterRule(_localctx, 146, RULE_setOrMapLiteral);
     int _la;
     try {
@@ -3615,7 +3616,7 @@ class DartParser extends Parser {
   }
 
   ListLiteralContext listLiteral() {
-    dynamic _localctx = ListLiteralContext(context, state);
+    var _localctx = ListLiteralContext(context, state);
     enterRule(_localctx, 148, RULE_listLiteral);
     int _la;
     try {
@@ -3659,7 +3660,7 @@ class DartParser extends Parser {
   }
 
   ElementsContext elements() {
-    dynamic _localctx = ElementsContext(context, state);
+    var _localctx = ElementsContext(context, state);
     enterRule(_localctx, 150, RULE_elements);
     int _la;
     try {
@@ -3700,7 +3701,7 @@ class DartParser extends Parser {
   }
 
   ElementContext element() {
-    dynamic _localctx = ElementContext(context, state);
+    var _localctx = ElementContext(context, state);
     enterRule(_localctx, 152, RULE_element);
     try {
       state = 1325;
@@ -3743,7 +3744,7 @@ class DartParser extends Parser {
   }
 
   ExpressionElementContext expressionElement() {
-    dynamic _localctx = ExpressionElementContext(context, state);
+    var _localctx = ExpressionElementContext(context, state);
     enterRule(_localctx, 154, RULE_expressionElement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -3760,7 +3761,7 @@ class DartParser extends Parser {
   }
 
   MapElementContext mapElement() {
-    dynamic _localctx = MapElementContext(context, state);
+    var _localctx = MapElementContext(context, state);
     enterRule(_localctx, 156, RULE_mapElement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -3781,7 +3782,7 @@ class DartParser extends Parser {
   }
 
   SpreadElementContext spreadElement() {
-    dynamic _localctx = SpreadElementContext(context, state);
+    var _localctx = SpreadElementContext(context, state);
     enterRule(_localctx, 158, RULE_spreadElement);
     int _la;
     try {
@@ -3808,7 +3809,7 @@ class DartParser extends Parser {
   }
 
   IfElementContext ifElement() {
-    dynamic _localctx = IfElementContext(context, state);
+    var _localctx = IfElementContext(context, state);
     enterRule(_localctx, 160, RULE_ifElement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -3843,7 +3844,7 @@ class DartParser extends Parser {
   }
 
   ForElementContext forElement() {
-    dynamic _localctx = ForElementContext(context, state);
+    var _localctx = ForElementContext(context, state);
     enterRule(_localctx, 162, RULE_forElement);
     int _la;
     try {
@@ -3877,7 +3878,7 @@ class DartParser extends Parser {
   }
 
   ConstructorTearoffContext constructorTearoff() {
-    dynamic _localctx = ConstructorTearoffContext(context, state);
+    var _localctx = ConstructorTearoffContext(context, state);
     enterRule(_localctx, 164, RULE_constructorTearoff);
     int _la;
     try {
@@ -3907,7 +3908,7 @@ class DartParser extends Parser {
   }
 
   ThrowExpressionContext throwExpression() {
-    dynamic _localctx = ThrowExpressionContext(context, state);
+    var _localctx = ThrowExpressionContext(context, state);
     enterRule(_localctx, 166, RULE_throwExpression);
     try {
       enterOuterAlt(_localctx, 1);
@@ -3926,7 +3927,7 @@ class DartParser extends Parser {
   }
 
   ThrowExpressionWithoutCascadeContext throwExpressionWithoutCascade() {
-    dynamic _localctx = ThrowExpressionWithoutCascadeContext(context, state);
+    var _localctx = ThrowExpressionWithoutCascadeContext(context, state);
     enterRule(_localctx, 168, RULE_throwExpressionWithoutCascade);
     try {
       enterOuterAlt(_localctx, 1);
@@ -3945,7 +3946,7 @@ class DartParser extends Parser {
   }
 
   FunctionExpressionContext functionExpression() {
-    dynamic _localctx = FunctionExpressionContext(context, state);
+    var _localctx = FunctionExpressionContext(context, state);
     enterRule(_localctx, 170, RULE_functionExpression);
     try {
       enterOuterAlt(_localctx, 1);
@@ -3964,7 +3965,7 @@ class DartParser extends Parser {
   }
 
   FunctionExpressionBodyContext functionExpressionBody() {
-    dynamic _localctx = FunctionExpressionBodyContext(context, state);
+    var _localctx = FunctionExpressionBodyContext(context, state);
     enterRule(_localctx, 172, RULE_functionExpressionBody);
     try {
       state = 1381;
@@ -4004,7 +4005,7 @@ class DartParser extends Parser {
   }
 
   FunctionExpressionBodyPrefixContext functionExpressionBodyPrefix() {
-    dynamic _localctx = FunctionExpressionBodyPrefixContext(context, state);
+    var _localctx = FunctionExpressionBodyPrefixContext(context, state);
     enterRule(_localctx, 174, RULE_functionExpressionBodyPrefix);
     int _la;
     try {
@@ -4030,7 +4031,7 @@ class DartParser extends Parser {
   }
 
   FunctionExpressionWithoutCascadeContext functionExpressionWithoutCascade() {
-    dynamic _localctx = FunctionExpressionWithoutCascadeContext(context, state);
+    var _localctx = FunctionExpressionWithoutCascadeContext(context, state);
     enterRule(_localctx, 176, RULE_functionExpressionWithoutCascade);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4049,7 +4050,7 @@ class DartParser extends Parser {
   }
 
   FunctionExpressionWithoutCascadeBodyContext functionExpressionWithoutCascadeBody() {
-    dynamic _localctx = FunctionExpressionWithoutCascadeBodyContext(context, state);
+    var _localctx = FunctionExpressionWithoutCascadeBodyContext(context, state);
     enterRule(_localctx, 178, RULE_functionExpressionWithoutCascadeBody);
     try {
       state = 1402;
@@ -4089,7 +4090,7 @@ class DartParser extends Parser {
   }
 
   FunctionPrimaryContext functionPrimary() {
-    dynamic _localctx = FunctionPrimaryContext(context, state);
+    var _localctx = FunctionPrimaryContext(context, state);
     enterRule(_localctx, 180, RULE_functionPrimary);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4108,7 +4109,7 @@ class DartParser extends Parser {
   }
 
   FunctionPrimaryBodyContext functionPrimaryBody() {
-    dynamic _localctx = FunctionPrimaryBodyContext(context, state);
+    var _localctx = FunctionPrimaryBodyContext(context, state);
     enterRule(_localctx, 182, RULE_functionPrimaryBody);
     try {
       state = 1422;
@@ -4163,7 +4164,7 @@ class DartParser extends Parser {
   }
 
   FunctionPrimaryBodyPrefixContext functionPrimaryBodyPrefix() {
-    dynamic _localctx = FunctionPrimaryBodyPrefixContext(context, state);
+    var _localctx = FunctionPrimaryBodyPrefixContext(context, state);
     enterRule(_localctx, 184, RULE_functionPrimaryBodyPrefix);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4200,7 +4201,7 @@ class DartParser extends Parser {
   }
 
   ThisExpressionContext thisExpression() {
-    dynamic _localctx = ThisExpressionContext(context, state);
+    var _localctx = ThisExpressionContext(context, state);
     enterRule(_localctx, 186, RULE_thisExpression);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4217,7 +4218,7 @@ class DartParser extends Parser {
   }
 
   NewExpressionContext newExpression() {
-    dynamic _localctx = NewExpressionContext(context, state);
+    var _localctx = NewExpressionContext(context, state);
     enterRule(_localctx, 188, RULE_newExpression);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4238,7 +4239,7 @@ class DartParser extends Parser {
   }
 
   ConstObjectExpressionContext constObjectExpression() {
-    dynamic _localctx = ConstObjectExpressionContext(context, state);
+    var _localctx = ConstObjectExpressionContext(context, state);
     enterRule(_localctx, 190, RULE_constObjectExpression);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4259,7 +4260,7 @@ class DartParser extends Parser {
   }
 
   ArgumentsContext arguments() {
-    dynamic _localctx = ArgumentsContext(context, state);
+    var _localctx = ArgumentsContext(context, state);
     enterRule(_localctx, 192, RULE_arguments);
     int _la;
     try {
@@ -4295,7 +4296,7 @@ class DartParser extends Parser {
   }
 
   ArgumentListContext argumentList() {
-    dynamic _localctx = ArgumentListContext(context, state);
+    var _localctx = ArgumentListContext(context, state);
     enterRule(_localctx, 194, RULE_argumentList);
     try {
       int _alt;
@@ -4352,7 +4353,7 @@ class DartParser extends Parser {
   }
 
   NamedArgumentContext namedArgument() {
-    dynamic _localctx = NamedArgumentContext(context, state);
+    var _localctx = NamedArgumentContext(context, state);
     enterRule(_localctx, 196, RULE_namedArgument);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4373,7 +4374,7 @@ class DartParser extends Parser {
   CascadeContext cascade([int _p = 0]) {
     final _parentctx = context;
     final _parentState = state;
-    dynamic _localctx = CascadeContext(context, _parentState);
+    var _localctx = CascadeContext(context, _parentState);
     var _prevctx = _localctx;
     var _startState = 198;
     enterRecursionRule(_localctx, 198, RULE_cascade, _p);
@@ -4428,7 +4429,7 @@ class DartParser extends Parser {
   }
 
   CascadeSectionContext cascadeSection() {
-    dynamic _localctx = CascadeSectionContext(context, state);
+    var _localctx = CascadeSectionContext(context, state);
     enterRule(_localctx, 200, RULE_cascadeSection);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4447,7 +4448,7 @@ class DartParser extends Parser {
   }
 
   CascadeSelectorContext cascadeSelector() {
-    dynamic _localctx = CascadeSelectorContext(context, state);
+    var _localctx = CascadeSelectorContext(context, state);
     enterRule(_localctx, 202, RULE_cascadeSelector);
     try {
       state = 1494;
@@ -4479,7 +4480,7 @@ class DartParser extends Parser {
   }
 
   CascadeSectionTailContext cascadeSectionTail() {
-    dynamic _localctx = CascadeSectionTailContext(context, state);
+    var _localctx = CascadeSectionTailContext(context, state);
     enterRule(_localctx, 204, RULE_cascadeSectionTail);
     try {
       int _alt;
@@ -4528,7 +4529,7 @@ class DartParser extends Parser {
   }
 
   CascadeAssignmentContext cascadeAssignment() {
-    dynamic _localctx = CascadeAssignmentContext(context, state);
+    var _localctx = CascadeAssignmentContext(context, state);
     enterRule(_localctx, 206, RULE_cascadeAssignment);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4547,7 +4548,7 @@ class DartParser extends Parser {
   }
 
   AssignmentOperatorContext assignmentOperator() {
-    dynamic _localctx = AssignmentOperatorContext(context, state);
+    var _localctx = AssignmentOperatorContext(context, state);
     enterRule(_localctx, 208, RULE_assignmentOperator);
     try {
       state = 1515;
@@ -4588,7 +4589,7 @@ class DartParser extends Parser {
   }
 
   CompoundAssignmentOperatorContext compoundAssignmentOperator() {
-    dynamic _localctx = CompoundAssignmentOperatorContext(context, state);
+    var _localctx = CompoundAssignmentOperatorContext(context, state);
     enterRule(_localctx, 210, RULE_compoundAssignmentOperator);
     try {
       state = 1535;
@@ -4681,7 +4682,7 @@ class DartParser extends Parser {
   }
 
   ConditionalExpressionContext conditionalExpression() {
-    dynamic _localctx = ConditionalExpressionContext(context, state);
+    var _localctx = ConditionalExpressionContext(context, state);
     enterRule(_localctx, 212, RULE_conditionalExpression);
     try {
       enterOuterAlt(_localctx, 1);
@@ -4712,7 +4713,7 @@ class DartParser extends Parser {
   }
 
   IfNullExpressionContext ifNullExpression() {
-    dynamic _localctx = IfNullExpressionContext(context, state);
+    var _localctx = IfNullExpressionContext(context, state);
     enterRule(_localctx, 214, RULE_ifNullExpression);
     try {
       int _alt;
@@ -4744,7 +4745,7 @@ class DartParser extends Parser {
   }
 
   LogicalOrExpressionContext logicalOrExpression() {
-    dynamic _localctx = LogicalOrExpressionContext(context, state);
+    var _localctx = LogicalOrExpressionContext(context, state);
     enterRule(_localctx, 216, RULE_logicalOrExpression);
     try {
       int _alt;
@@ -4776,7 +4777,7 @@ class DartParser extends Parser {
   }
 
   LogicalAndExpressionContext logicalAndExpression() {
-    dynamic _localctx = LogicalAndExpressionContext(context, state);
+    var _localctx = LogicalAndExpressionContext(context, state);
     enterRule(_localctx, 218, RULE_logicalAndExpression);
     try {
       int _alt;
@@ -4808,7 +4809,7 @@ class DartParser extends Parser {
   }
 
   EqualityExpressionContext equalityExpression() {
-    dynamic _localctx = EqualityExpressionContext(context, state);
+    var _localctx = EqualityExpressionContext(context, state);
     enterRule(_localctx, 220, RULE_equalityExpression);
     try {
       state = 1579;
@@ -4850,7 +4851,7 @@ class DartParser extends Parser {
   }
 
   EqualityOperatorContext equalityOperator() {
-    dynamic _localctx = EqualityOperatorContext(context, state);
+    var _localctx = EqualityOperatorContext(context, state);
     enterRule(_localctx, 222, RULE_equalityOperator);
     int _la;
     try {
@@ -4875,7 +4876,7 @@ class DartParser extends Parser {
   }
 
   RelationalExpressionContext relationalExpression() {
-    dynamic _localctx = RelationalExpressionContext(context, state);
+    var _localctx = RelationalExpressionContext(context, state);
     enterRule(_localctx, 224, RULE_relationalExpression);
     try {
       state = 1595;
@@ -4925,7 +4926,7 @@ class DartParser extends Parser {
   }
 
   RelationalOperatorContext relationalOperator() {
-    dynamic _localctx = RelationalOperatorContext(context, state);
+    var _localctx = RelationalOperatorContext(context, state);
     enterRule(_localctx, 226, RULE_relationalOperator);
     try {
       state = 1602;
@@ -4965,7 +4966,7 @@ class DartParser extends Parser {
   }
 
   BitwiseOrExpressionContext bitwiseOrExpression() {
-    dynamic _localctx = BitwiseOrExpressionContext(context, state);
+    var _localctx = BitwiseOrExpressionContext(context, state);
     enterRule(_localctx, 228, RULE_bitwiseOrExpression);
     try {
       int _alt;
@@ -5026,7 +5027,7 @@ class DartParser extends Parser {
   }
 
   BitwiseXorExpressionContext bitwiseXorExpression() {
-    dynamic _localctx = BitwiseXorExpressionContext(context, state);
+    var _localctx = BitwiseXorExpressionContext(context, state);
     enterRule(_localctx, 230, RULE_bitwiseXorExpression);
     try {
       int _alt;
@@ -5087,7 +5088,7 @@ class DartParser extends Parser {
   }
 
   BitwiseAndExpressionContext bitwiseAndExpression() {
-    dynamic _localctx = BitwiseAndExpressionContext(context, state);
+    var _localctx = BitwiseAndExpressionContext(context, state);
     enterRule(_localctx, 232, RULE_bitwiseAndExpression);
     try {
       int _alt;
@@ -5148,7 +5149,7 @@ class DartParser extends Parser {
   }
 
   BitwiseOperatorContext bitwiseOperator() {
-    dynamic _localctx = BitwiseOperatorContext(context, state);
+    var _localctx = BitwiseOperatorContext(context, state);
     enterRule(_localctx, 234, RULE_bitwiseOperator);
     int _la;
     try {
@@ -5173,7 +5174,7 @@ class DartParser extends Parser {
   }
 
   ShiftExpressionContext shiftExpression() {
-    dynamic _localctx = ShiftExpressionContext(context, state);
+    var _localctx = ShiftExpressionContext(context, state);
     enterRule(_localctx, 236, RULE_shiftExpression);
     try {
       int _alt;
@@ -5234,7 +5235,7 @@ class DartParser extends Parser {
   }
 
   ShiftOperatorContext shiftOperator() {
-    dynamic _localctx = ShiftOperatorContext(context, state);
+    var _localctx = ShiftOperatorContext(context, state);
     enterRule(_localctx, 238, RULE_shiftOperator);
     try {
       state = 1682;
@@ -5273,7 +5274,7 @@ class DartParser extends Parser {
   }
 
   AdditiveExpressionContext additiveExpression() {
-    dynamic _localctx = AdditiveExpressionContext(context, state);
+    var _localctx = AdditiveExpressionContext(context, state);
     enterRule(_localctx, 240, RULE_additiveExpression);
     try {
       int _alt;
@@ -5334,7 +5335,7 @@ class DartParser extends Parser {
   }
 
   AdditiveOperatorContext additiveOperator() {
-    dynamic _localctx = AdditiveOperatorContext(context, state);
+    var _localctx = AdditiveOperatorContext(context, state);
     enterRule(_localctx, 242, RULE_additiveOperator);
     int _la;
     try {
@@ -5359,7 +5360,7 @@ class DartParser extends Parser {
   }
 
   MultiplicativeExpressionContext multiplicativeExpression() {
-    dynamic _localctx = MultiplicativeExpressionContext(context, state);
+    var _localctx = MultiplicativeExpressionContext(context, state);
     enterRule(_localctx, 244, RULE_multiplicativeExpression);
     try {
       int _alt;
@@ -5420,7 +5421,7 @@ class DartParser extends Parser {
   }
 
   MultiplicativeOperatorContext multiplicativeOperator() {
-    dynamic _localctx = MultiplicativeOperatorContext(context, state);
+    var _localctx = MultiplicativeOperatorContext(context, state);
     enterRule(_localctx, 246, RULE_multiplicativeOperator);
     int _la;
     try {
@@ -5445,7 +5446,7 @@ class DartParser extends Parser {
   }
 
   UnaryExpressionContext unaryExpression() {
-    dynamic _localctx = UnaryExpressionContext(context, state);
+    var _localctx = UnaryExpressionContext(context, state);
     enterRule(_localctx, 248, RULE_unaryExpression);
     try {
       state = 1740;
@@ -5506,7 +5507,7 @@ class DartParser extends Parser {
   }
 
   PrefixOperatorContext prefixOperator() {
-    dynamic _localctx = PrefixOperatorContext(context, state);
+    var _localctx = PrefixOperatorContext(context, state);
     enterRule(_localctx, 250, RULE_prefixOperator);
     try {
       state = 1745;
@@ -5541,7 +5542,7 @@ class DartParser extends Parser {
   }
 
   MinusOperatorContext minusOperator() {
-    dynamic _localctx = MinusOperatorContext(context, state);
+    var _localctx = MinusOperatorContext(context, state);
     enterRule(_localctx, 252, RULE_minusOperator);
     try {
       enterOuterAlt(_localctx, 1);
@@ -5558,7 +5559,7 @@ class DartParser extends Parser {
   }
 
   NegationOperatorContext negationOperator() {
-    dynamic _localctx = NegationOperatorContext(context, state);
+    var _localctx = NegationOperatorContext(context, state);
     enterRule(_localctx, 254, RULE_negationOperator);
     try {
       enterOuterAlt(_localctx, 1);
@@ -5575,7 +5576,7 @@ class DartParser extends Parser {
   }
 
   TildeOperatorContext tildeOperator() {
-    dynamic _localctx = TildeOperatorContext(context, state);
+    var _localctx = TildeOperatorContext(context, state);
     enterRule(_localctx, 256, RULE_tildeOperator);
     try {
       enterOuterAlt(_localctx, 1);
@@ -5592,7 +5593,7 @@ class DartParser extends Parser {
   }
 
   AwaitExpressionContext awaitExpression() {
-    dynamic _localctx = AwaitExpressionContext(context, state);
+    var _localctx = AwaitExpressionContext(context, state);
     enterRule(_localctx, 258, RULE_awaitExpression);
     try {
       enterOuterAlt(_localctx, 1);
@@ -5611,7 +5612,7 @@ class DartParser extends Parser {
   }
 
   PostfixExpressionContext postfixExpression() {
-    dynamic _localctx = PostfixExpressionContext(context, state);
+    var _localctx = PostfixExpressionContext(context, state);
     enterRule(_localctx, 260, RULE_postfixExpression);
     try {
       int _alt;
@@ -5654,7 +5655,7 @@ class DartParser extends Parser {
   }
 
   PostfixOperatorContext postfixOperator() {
-    dynamic _localctx = PostfixOperatorContext(context, state);
+    var _localctx = PostfixOperatorContext(context, state);
     enterRule(_localctx, 262, RULE_postfixOperator);
     try {
       enterOuterAlt(_localctx, 1);
@@ -5671,7 +5672,7 @@ class DartParser extends Parser {
   }
 
   SelectorContext selector() {
-    dynamic _localctx = SelectorContext(context, state);
+    var _localctx = SelectorContext(context, state);
     enterRule(_localctx, 264, RULE_selector);
     try {
       state = 1774;
@@ -5709,7 +5710,7 @@ class DartParser extends Parser {
   }
 
   ArgumentPartContext argumentPart() {
-    dynamic _localctx = ArgumentPartContext(context, state);
+    var _localctx = ArgumentPartContext(context, state);
     enterRule(_localctx, 266, RULE_argumentPart);
     int _la;
     try {
@@ -5735,7 +5736,7 @@ class DartParser extends Parser {
   }
 
   IncrementOperatorContext incrementOperator() {
-    dynamic _localctx = IncrementOperatorContext(context, state);
+    var _localctx = IncrementOperatorContext(context, state);
     enterRule(_localctx, 268, RULE_incrementOperator);
     int _la;
     try {
@@ -5760,7 +5761,7 @@ class DartParser extends Parser {
   }
 
   AssignableExpressionContext assignableExpression() {
-    dynamic _localctx = AssignableExpressionContext(context, state);
+    var _localctx = AssignableExpressionContext(context, state);
     enterRule(_localctx, 270, RULE_assignableExpression);
     try {
       state = 1789;
@@ -5797,7 +5798,7 @@ class DartParser extends Parser {
   }
 
   AssignableSelectorPartContext assignableSelectorPart() {
-    dynamic _localctx = AssignableSelectorPartContext(context, state);
+    var _localctx = AssignableSelectorPartContext(context, state);
     enterRule(_localctx, 272, RULE_assignableSelectorPart);
     try {
       int _alt;
@@ -5827,7 +5828,7 @@ class DartParser extends Parser {
   }
 
   UnconditionalAssignableSelectorContext unconditionalAssignableSelector() {
-    dynamic _localctx = UnconditionalAssignableSelectorContext(context, state);
+    var _localctx = UnconditionalAssignableSelectorContext(context, state);
     enterRule(_localctx, 274, RULE_unconditionalAssignableSelector);
     try {
       state = 1805;
@@ -5863,7 +5864,7 @@ class DartParser extends Parser {
   }
 
   AssignableSelectorContext assignableSelector() {
-    dynamic _localctx = AssignableSelectorContext(context, state);
+    var _localctx = AssignableSelectorContext(context, state);
     enterRule(_localctx, 276, RULE_assignableSelector);
     try {
       state = 1815;
@@ -5907,7 +5908,7 @@ class DartParser extends Parser {
   }
 
   IdentifierNotFUNCTIONContext identifierNotFUNCTION() {
-    dynamic _localctx = IdentifierNotFUNCTIONContext(context, state);
+    var _localctx = IdentifierNotFUNCTIONContext(context, state);
     enterRule(_localctx, 278, RULE_identifierNotFUNCTION);
     int _la;
     try {
@@ -5958,7 +5959,7 @@ class DartParser extends Parser {
         enterOuterAlt(_localctx, 9);
         state = 1825;
         if (!( asyncEtcPredicate(currentToken.type) )) {
-          throw FailedPredicateException(this, " asyncEtcPredicate(getCurrentToken().getType()) ");
+          throw FailedPredicateException(this, " asyncEtcPredicate(currentToken.type) ");
         }
         state = 1826;
         _la = tokenStream.LA(1)!;
@@ -5982,7 +5983,7 @@ class DartParser extends Parser {
   }
 
   IdentifierContext identifier() {
-    dynamic _localctx = IdentifierContext(context, state);
+    var _localctx = IdentifierContext(context, state);
     enterRule(_localctx, 280, RULE_identifier);
     try {
       state = 1831;
@@ -6010,7 +6011,7 @@ class DartParser extends Parser {
   }
 
   QualifiedNameContext qualifiedName() {
-    dynamic _localctx = QualifiedNameContext(context, state);
+    var _localctx = QualifiedNameContext(context, state);
     enterRule(_localctx, 282, RULE_qualifiedName);
     try {
       state = 1847;
@@ -6070,7 +6071,7 @@ class DartParser extends Parser {
   }
 
   TypeIdentifierContext typeIdentifier() {
-    dynamic _localctx = TypeIdentifierContext(context, state);
+    var _localctx = TypeIdentifierContext(context, state);
     enterRule(_localctx, 284, RULE_typeIdentifier);
     int _la;
     try {
@@ -6121,7 +6122,7 @@ class DartParser extends Parser {
         enterOuterAlt(_localctx, 9);
         state = 1857;
         if (!( asyncEtcPredicate(currentToken.type) )) {
-          throw FailedPredicateException(this, " asyncEtcPredicate(getCurrentToken().getType()) ");
+          throw FailedPredicateException(this, " asyncEtcPredicate(currentToken.type) ");
         }
         state = 1858;
         _la = tokenStream.LA(1)!;
@@ -6145,7 +6146,7 @@ class DartParser extends Parser {
   }
 
   TypeTestContext typeTest() {
-    dynamic _localctx = TypeTestContext(context, state);
+    var _localctx = TypeTestContext(context, state);
     enterRule(_localctx, 286, RULE_typeTest);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6164,7 +6165,7 @@ class DartParser extends Parser {
   }
 
   IsOperatorContext isOperator() {
-    dynamic _localctx = IsOperatorContext(context, state);
+    var _localctx = IsOperatorContext(context, state);
     enterRule(_localctx, 288, RULE_isOperator);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6189,7 +6190,7 @@ class DartParser extends Parser {
   }
 
   TypeCastContext typeCast() {
-    dynamic _localctx = TypeCastContext(context, state);
+    var _localctx = TypeCastContext(context, state);
     enterRule(_localctx, 290, RULE_typeCast);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6208,7 +6209,7 @@ class DartParser extends Parser {
   }
 
   AsOperatorContext asOperator() {
-    dynamic _localctx = AsOperatorContext(context, state);
+    var _localctx = AsOperatorContext(context, state);
     enterRule(_localctx, 292, RULE_asOperator);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6225,7 +6226,7 @@ class DartParser extends Parser {
   }
 
   StatementsContext statements() {
-    dynamic _localctx = StatementsContext(context, state);
+    var _localctx = StatementsContext(context, state);
     enterRule(_localctx, 294, RULE_statements);
     try {
       int _alt;
@@ -6253,7 +6254,7 @@ class DartParser extends Parser {
   }
 
   StatementContext statement() {
-    dynamic _localctx = StatementContext(context, state);
+    var _localctx = StatementContext(context, state);
     enterRule(_localctx, 296, RULE_statement);
     try {
       int _alt;
@@ -6283,7 +6284,7 @@ class DartParser extends Parser {
   }
 
   NonLabelledStatementContext nonLabelledStatement() {
-    dynamic _localctx = NonLabelledStatementContext(context, state);
+    final _localctx = NonLabelledStatementContext(context, state);
     enterRule(_localctx, 298, RULE_nonLabelledStatement);
     try {
       state = 1904;
@@ -6386,7 +6387,7 @@ class DartParser extends Parser {
   }
 
   ExpressionStatementContext expressionStatement() {
-    dynamic _localctx = ExpressionStatementContext(context, state);
+    var _localctx = ExpressionStatementContext(context, state);
     enterRule(_localctx, 300, RULE_expressionStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6411,7 +6412,7 @@ class DartParser extends Parser {
   }
 
   LocalVariableDeclarationContext localVariableDeclaration() {
-    dynamic _localctx = LocalVariableDeclarationContext(context, state);
+    var _localctx = LocalVariableDeclarationContext(context, state);
     enterRule(_localctx, 302, RULE_localVariableDeclaration);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6432,7 +6433,7 @@ class DartParser extends Parser {
   }
 
   InitializedVariableDeclarationContext initializedVariableDeclaration() {
-    dynamic _localctx = InitializedVariableDeclarationContext(context, state);
+    var _localctx = InitializedVariableDeclarationContext(context, state);
     enterRule(_localctx, 304, RULE_initializedVariableDeclaration);
     int _la;
     try {
@@ -6472,7 +6473,7 @@ class DartParser extends Parser {
   }
 
   LocalFunctionDeclarationContext localFunctionDeclaration() {
-    dynamic _localctx = LocalFunctionDeclarationContext(context, state);
+    var _localctx = LocalFunctionDeclarationContext(context, state);
     enterRule(_localctx, 306, RULE_localFunctionDeclaration);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6493,7 +6494,7 @@ class DartParser extends Parser {
   }
 
   IfStatementContext ifStatement() {
-    dynamic _localctx = IfStatementContext(context, state);
+    var _localctx = IfStatementContext(context, state);
     enterRule(_localctx, 308, RULE_ifStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6528,7 +6529,7 @@ class DartParser extends Parser {
   }
 
   ForStatementContext forStatement() {
-    dynamic _localctx = ForStatementContext(context, state);
+    var _localctx = ForStatementContext(context, state);
     enterRule(_localctx, 310, RULE_forStatement);
     int _la;
     try {
@@ -6562,7 +6563,7 @@ class DartParser extends Parser {
   }
 
   ForLoopPartsContext forLoopParts() {
-    dynamic _localctx = ForLoopPartsContext(context, state);
+    var _localctx = ForLoopPartsContext(context, state);
     enterRule(_localctx, 312, RULE_forLoopParts);
     try {
       state = 1967;
@@ -6625,7 +6626,7 @@ class DartParser extends Parser {
   }
 
   ForInitializerStatementContext forInitializerStatement() {
-    dynamic _localctx = ForInitializerStatementContext(context, state);
+    var _localctx = ForInitializerStatementContext(context, state);
     enterRule(_localctx, 314, RULE_forInitializerStatement);
     try {
       state = 1974;
@@ -6661,7 +6662,7 @@ class DartParser extends Parser {
   }
 
   WhileStatementContext whileStatement() {
-    dynamic _localctx = WhileStatementContext(context, state);
+    var _localctx = WhileStatementContext(context, state);
     enterRule(_localctx, 316, RULE_whileStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6686,7 +6687,7 @@ class DartParser extends Parser {
   }
 
   DoStatementContext doStatement() {
-    dynamic _localctx = DoStatementContext(context, state);
+    var _localctx = DoStatementContext(context, state);
     enterRule(_localctx, 318, RULE_doStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6715,7 +6716,7 @@ class DartParser extends Parser {
   }
 
   SwitchStatementContext switchStatement() {
-    dynamic _localctx = SwitchStatementContext(context, state);
+    var _localctx = SwitchStatementContext(context, state);
     enterRule(_localctx, 320, RULE_switchStatement);
     try {
       int _alt;
@@ -6763,7 +6764,7 @@ class DartParser extends Parser {
   }
 
   SwitchCaseContext switchCase() {
-    dynamic _localctx = SwitchCaseContext(context, state);
+    var _localctx = SwitchCaseContext(context, state);
     enterRule(_localctx, 322, RULE_switchCase);
     try {
       int _alt;
@@ -6799,7 +6800,7 @@ class DartParser extends Parser {
   }
 
   DefaultCaseContext defaultCase() {
-    dynamic _localctx = DefaultCaseContext(context, state);
+    var _localctx = DefaultCaseContext(context, state);
     enterRule(_localctx, 324, RULE_defaultCase);
     try {
       int _alt;
@@ -6833,7 +6834,7 @@ class DartParser extends Parser {
   }
 
   RethrowStatementContext rethrowStatement() {
-    dynamic _localctx = RethrowStatementContext(context, state);
+    var _localctx = RethrowStatementContext(context, state);
     enterRule(_localctx, 326, RULE_rethrowStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6852,7 +6853,7 @@ class DartParser extends Parser {
   }
 
   TryStatementContext tryStatement() {
-    dynamic _localctx = TryStatementContext(context, state);
+    var _localctx = TryStatementContext(context, state);
     enterRule(_localctx, 328, RULE_tryStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -6894,7 +6895,7 @@ class DartParser extends Parser {
   }
 
   OnPartContext onPart() {
-    dynamic _localctx = OnPartContext(context, state);
+    var _localctx = OnPartContext(context, state);
     enterRule(_localctx, 330, RULE_onPart);
     int _la;
     try {
@@ -6939,7 +6940,7 @@ class DartParser extends Parser {
   }
 
   OnPartsContext onParts() {
-    dynamic _localctx = OnPartsContext(context, state);
+    var _localctx = OnPartsContext(context, state);
     enterRule(_localctx, 332, RULE_onParts);
     try {
       state = 2055;
@@ -6969,7 +6970,7 @@ class DartParser extends Parser {
   }
 
   CatchPartContext catchPart() {
-    dynamic _localctx = CatchPartContext(context, state);
+    var _localctx = CatchPartContext(context, state);
     enterRule(_localctx, 334, RULE_catchPart);
     int _la;
     try {
@@ -7003,7 +7004,7 @@ class DartParser extends Parser {
   }
 
   FinallyPartContext finallyPart() {
-    dynamic _localctx = FinallyPartContext(context, state);
+    var _localctx = FinallyPartContext(context, state);
     enterRule(_localctx, 336, RULE_finallyPart);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7022,7 +7023,7 @@ class DartParser extends Parser {
   }
 
   ReturnStatementContext returnStatement() {
-    dynamic _localctx = ReturnStatementContext(context, state);
+    var _localctx = ReturnStatementContext(context, state);
     enterRule(_localctx, 338, RULE_returnStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7049,7 +7050,7 @@ class DartParser extends Parser {
   }
 
   LabelContext label() {
-    dynamic _localctx = LabelContext(context, state);
+    var _localctx = LabelContext(context, state);
     enterRule(_localctx, 340, RULE_label);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7068,7 +7069,7 @@ class DartParser extends Parser {
   }
 
   BreakStatementContext breakStatement() {
-    dynamic _localctx = BreakStatementContext(context, state);
+    var _localctx = BreakStatementContext(context, state);
     enterRule(_localctx, 342, RULE_breakStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7095,7 +7096,7 @@ class DartParser extends Parser {
   }
 
   ContinueStatementContext continueStatement() {
-    dynamic _localctx = ContinueStatementContext(context, state);
+    var _localctx = ContinueStatementContext(context, state);
     enterRule(_localctx, 344, RULE_continueStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7122,7 +7123,7 @@ class DartParser extends Parser {
   }
 
   YieldStatementContext yieldStatement() {
-    dynamic _localctx = YieldStatementContext(context, state);
+    var _localctx = YieldStatementContext(context, state);
     enterRule(_localctx, 346, RULE_yieldStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7143,7 +7144,7 @@ class DartParser extends Parser {
   }
 
   YieldEachStatementContext yieldEachStatement() {
-    dynamic _localctx = YieldEachStatementContext(context, state);
+    var _localctx = YieldEachStatementContext(context, state);
     enterRule(_localctx, 348, RULE_yieldEachStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7166,7 +7167,7 @@ class DartParser extends Parser {
   }
 
   AssertStatementContext assertStatement() {
-    dynamic _localctx = AssertStatementContext(context, state);
+    var _localctx = AssertStatementContext(context, state);
     enterRule(_localctx, 350, RULE_assertStatement);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7185,7 +7186,7 @@ class DartParser extends Parser {
   }
 
   AssertionContext assertion() {
-    dynamic _localctx = AssertionContext(context, state);
+    var _localctx = AssertionContext(context, state);
     enterRule(_localctx, 352, RULE_assertion);
     int _la;
     try {
@@ -7227,7 +7228,7 @@ class DartParser extends Parser {
   }
 
   LibraryNameContext libraryName() {
-    dynamic _localctx = LibraryNameContext(context, state);
+    var _localctx = LibraryNameContext(context, state);
     enterRule(_localctx, 354, RULE_libraryName);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7250,7 +7251,7 @@ class DartParser extends Parser {
   }
 
   DottedIdentifierListContext dottedIdentifierList() {
-    dynamic _localctx = DottedIdentifierListContext(context, state);
+    var _localctx = DottedIdentifierListContext(context, state);
     enterRule(_localctx, 356, RULE_dottedIdentifierList);
     int _la;
     try {
@@ -7280,7 +7281,7 @@ class DartParser extends Parser {
   }
 
   ImportOrExportContext importOrExport() {
-    dynamic _localctx = ImportOrExportContext(context, state);
+    var _localctx = ImportOrExportContext(context, state);
     enterRule(_localctx, 358, RULE_importOrExport);
     try {
       state = 2129;
@@ -7308,7 +7309,7 @@ class DartParser extends Parser {
   }
 
   LibraryImportContext libraryImport() {
-    dynamic _localctx = LibraryImportContext(context, state);
+    var _localctx = LibraryImportContext(context, state);
     enterRule(_localctx, 360, RULE_libraryImport);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7327,7 +7328,7 @@ class DartParser extends Parser {
   }
 
   ImportSpecificationContext importSpecification() {
-    dynamic _localctx = ImportSpecificationContext(context, state);
+    var _localctx = ImportSpecificationContext(context, state);
     enterRule(_localctx, 362, RULE_importSpecification);
     int _la;
     try {
@@ -7377,7 +7378,7 @@ class DartParser extends Parser {
   }
 
   CombinatorContext combinator() {
-    dynamic _localctx = CombinatorContext(context, state);
+    var _localctx = CombinatorContext(context, state);
     enterRule(_localctx, 364, RULE_combinator);
     try {
       state = 2155;
@@ -7411,7 +7412,7 @@ class DartParser extends Parser {
   }
 
   IdentifierListContext identifierList() {
-    dynamic _localctx = IdentifierListContext(context, state);
+    var _localctx = IdentifierListContext(context, state);
     enterRule(_localctx, 366, RULE_identifierList);
     int _la;
     try {
@@ -7441,7 +7442,7 @@ class DartParser extends Parser {
   }
 
   LibraryExportContext libraryExport() {
-    dynamic _localctx = LibraryExportContext(context, state);
+    var _localctx = LibraryExportContext(context, state);
     enterRule(_localctx, 368, RULE_libraryExport);
     int _la;
     try {
@@ -7475,7 +7476,7 @@ class DartParser extends Parser {
   }
 
   PartDirectiveContext partDirective() {
-    dynamic _localctx = PartDirectiveContext(context, state);
+    var _localctx = PartDirectiveContext(context, state);
     enterRule(_localctx, 370, RULE_partDirective);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7498,7 +7499,7 @@ class DartParser extends Parser {
   }
 
   PartHeaderContext partHeader() {
-    dynamic _localctx = PartHeaderContext(context, state);
+    var _localctx = PartHeaderContext(context, state);
     enterRule(_localctx, 372, RULE_partHeader);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7533,7 +7534,7 @@ class DartParser extends Parser {
   }
 
   PartDeclarationContext partDeclaration() {
-    dynamic _localctx = PartDeclarationContext(context, state);
+    var _localctx = PartDeclarationContext(context, state);
     enterRule(_localctx, 374, RULE_partDeclaration);
     try {
       int _alt;
@@ -7567,7 +7568,7 @@ class DartParser extends Parser {
   }
 
   UriContext uri() {
-    dynamic _localctx = UriContext(context, state);
+    var _localctx = UriContext(context, state);
     enterRule(_localctx, 376, RULE_uri);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7584,7 +7585,7 @@ class DartParser extends Parser {
   }
 
   ConfigurableUriContext configurableUri() {
-    dynamic _localctx = ConfigurableUriContext(context, state);
+    var _localctx = ConfigurableUriContext(context, state);
     enterRule(_localctx, 378, RULE_configurableUri);
     int _la;
     try {
@@ -7612,7 +7613,7 @@ class DartParser extends Parser {
   }
 
   ConfigurationUriContext configurationUri() {
-    dynamic _localctx = ConfigurationUriContext(context, state);
+    var _localctx = ConfigurationUriContext(context, state);
     enterRule(_localctx, 380, RULE_configurationUri);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7637,7 +7638,7 @@ class DartParser extends Parser {
   }
 
   UriTestContext uriTest() {
-    dynamic _localctx = UriTestContext(context, state);
+    var _localctx = UriTestContext(context, state);
     enterRule(_localctx, 382, RULE_uriTest);
     int _la;
     try {
@@ -7665,7 +7666,7 @@ class DartParser extends Parser {
   }
 
   TypeContext type() {
-    dynamic _localctx = TypeContext(context, state);
+    var _localctx = TypeContext(context, state);
     enterRule(_localctx, 384, RULE_type);
     try {
       state = 2226;
@@ -7701,7 +7702,7 @@ class DartParser extends Parser {
   }
 
   TypeNotVoidContext typeNotVoid() {
-    dynamic _localctx = TypeNotVoidContext(context, state);
+    var _localctx = TypeNotVoidContext(context, state);
     enterRule(_localctx, 386, RULE_typeNotVoid);
     try {
       state = 2233;
@@ -7737,7 +7738,7 @@ class DartParser extends Parser {
   }
 
   TypeNotFunctionContext typeNotFunction() {
-    dynamic _localctx = TypeNotFunctionContext(context, state);
+    var _localctx = TypeNotFunctionContext(context, state);
     enterRule(_localctx, 388, RULE_typeNotFunction);
     try {
       state = 2237;
@@ -7765,7 +7766,7 @@ class DartParser extends Parser {
   }
 
   TypeNotVoidNotFunctionContext typeNotVoidNotFunction() {
-    dynamic _localctx = TypeNotVoidNotFunctionContext(context, state);
+    var _localctx = TypeNotVoidNotFunctionContext(context, state);
     enterRule(_localctx, 390, RULE_typeNotVoidNotFunction);
     try {
       state = 2250;
@@ -7817,7 +7818,7 @@ class DartParser extends Parser {
   }
 
   TypeNameContext typeName() {
-    dynamic _localctx = TypeNameContext(context, state);
+    var _localctx = TypeNameContext(context, state);
     enterRule(_localctx, 392, RULE_typeName);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7844,7 +7845,7 @@ class DartParser extends Parser {
   }
 
   TypeArgumentsContext typeArguments() {
-    dynamic _localctx = TypeArgumentsContext(context, state);
+    var _localctx = TypeArgumentsContext(context, state);
     enterRule(_localctx, 394, RULE_typeArguments);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7865,7 +7866,7 @@ class DartParser extends Parser {
   }
 
   TypeListContext typeList() {
-    dynamic _localctx = TypeListContext(context, state);
+    var _localctx = TypeListContext(context, state);
     enterRule(_localctx, 396, RULE_typeList);
     int _la;
     try {
@@ -7895,7 +7896,7 @@ class DartParser extends Parser {
   }
 
   TypeNotVoidNotFunctionListContext typeNotVoidNotFunctionList() {
-    dynamic _localctx = TypeNotVoidNotFunctionListContext(context, state);
+    var _localctx = TypeNotVoidNotFunctionListContext(context, state);
     enterRule(_localctx, 398, RULE_typeNotVoidNotFunctionList);
     int _la;
     try {
@@ -7925,7 +7926,7 @@ class DartParser extends Parser {
   }
 
   TypeAliasContext typeAlias() {
-    dynamic _localctx = TypeAliasContext(context, state);
+    var _localctx = TypeAliasContext(context, state);
     enterRule(_localctx, 400, RULE_typeAlias);
     int _la;
     try {
@@ -7972,7 +7973,7 @@ class DartParser extends Parser {
   }
 
   FunctionTypeAliasContext functionTypeAlias() {
-    dynamic _localctx = FunctionTypeAliasContext(context, state);
+    var _localctx = FunctionTypeAliasContext(context, state);
     enterRule(_localctx, 402, RULE_functionTypeAlias);
     try {
       enterOuterAlt(_localctx, 1);
@@ -7993,7 +7994,7 @@ class DartParser extends Parser {
   }
 
   FunctionPrefixContext functionPrefix() {
-    dynamic _localctx = FunctionPrefixContext(context, state);
+    var _localctx = FunctionPrefixContext(context, state);
     enterRule(_localctx, 404, RULE_functionPrefix);
     try {
       state = 2298;
@@ -8023,7 +8024,7 @@ class DartParser extends Parser {
   }
 
   FunctionTypeTailContext functionTypeTail() {
-    dynamic _localctx = FunctionTypeTailContext(context, state);
+    var _localctx = FunctionTypeTailContext(context, state);
     enterRule(_localctx, 406, RULE_functionTypeTail);
     int _la;
     try {
@@ -8051,7 +8052,7 @@ class DartParser extends Parser {
   }
 
   FunctionTypeTailsContext functionTypeTails() {
-    dynamic _localctx = FunctionTypeTailsContext(context, state);
+    var _localctx = FunctionTypeTailsContext(context, state);
     enterRule(_localctx, 408, RULE_functionTypeTails);
     int _la;
     try {
@@ -8090,7 +8091,7 @@ class DartParser extends Parser {
   }
 
   FunctionTypeContext functionType() {
-    dynamic _localctx = FunctionTypeContext(context, state);
+    var _localctx = FunctionTypeContext(context, state);
     enterRule(_localctx, 410, RULE_functionType);
     try {
       state = 2319;
@@ -8120,7 +8121,7 @@ class DartParser extends Parser {
   }
 
   ParameterTypeListContext parameterTypeList() {
-    dynamic _localctx = ParameterTypeListContext(context, state);
+    var _localctx = ParameterTypeListContext(context, state);
     enterRule(_localctx, 412, RULE_parameterTypeList);
     int _la;
     try {
@@ -8185,7 +8186,7 @@ class DartParser extends Parser {
   }
 
   NormalParameterTypesContext normalParameterTypes() {
-    dynamic _localctx = NormalParameterTypesContext(context, state);
+    var _localctx = NormalParameterTypesContext(context, state);
     enterRule(_localctx, 414, RULE_normalParameterTypes);
     try {
       int _alt;
@@ -8217,7 +8218,7 @@ class DartParser extends Parser {
   }
 
   NormalParameterTypeContext normalParameterType() {
-    dynamic _localctx = NormalParameterTypeContext(context, state);
+    var _localctx = NormalParameterTypeContext(context, state);
     enterRule(_localctx, 416, RULE_normalParameterType);
     try {
       state = 2356;
@@ -8249,7 +8250,7 @@ class DartParser extends Parser {
   }
 
   OptionalParameterTypesContext optionalParameterTypes() {
-    dynamic _localctx = OptionalParameterTypesContext(context, state);
+    var _localctx = OptionalParameterTypesContext(context, state);
     enterRule(_localctx, 418, RULE_optionalParameterTypes);
     try {
       state = 2360;
@@ -8279,7 +8280,7 @@ class DartParser extends Parser {
   }
 
   OptionalPositionalParameterTypesContext optionalPositionalParameterTypes() {
-    dynamic _localctx = OptionalPositionalParameterTypesContext(context, state);
+    var _localctx = OptionalPositionalParameterTypesContext(context, state);
     enterRule(_localctx, 420, RULE_optionalPositionalParameterTypes);
     int _la;
     try {
@@ -8309,7 +8310,7 @@ class DartParser extends Parser {
   }
 
   NamedParameterTypesContext namedParameterTypes() {
-    dynamic _localctx = NamedParameterTypesContext(context, state);
+    var _localctx = NamedParameterTypesContext(context, state);
     enterRule(_localctx, 422, RULE_namedParameterTypes);
     int _la;
     try {
@@ -8354,7 +8355,7 @@ class DartParser extends Parser {
   }
 
   NamedParameterTypeContext namedParameterType() {
-    dynamic _localctx = NamedParameterTypeContext(context, state);
+    var _localctx = NamedParameterTypeContext(context, state);
     enterRule(_localctx, 424, RULE_namedParameterType);
     try {
       enterOuterAlt(_localctx, 1);
@@ -8381,7 +8382,7 @@ class DartParser extends Parser {
   }
 
   TypedIdentifierContext typedIdentifier() {
-    dynamic _localctx = TypedIdentifierContext(context, state);
+    var _localctx = TypedIdentifierContext(context, state);
     enterRule(_localctx, 426, RULE_typedIdentifier);
     try {
       enterOuterAlt(_localctx, 1);
@@ -8400,7 +8401,7 @@ class DartParser extends Parser {
   }
 
   ConstructorDesignationContext constructorDesignation() {
-    dynamic _localctx = ConstructorDesignationContext(context, state);
+    var _localctx = ConstructorDesignationContext(context, state);
     enterRule(_localctx, 428, RULE_constructorDesignation);
     int _la;
     try {
@@ -8456,7 +8457,7 @@ class DartParser extends Parser {
   }
 
   SymbolLiteralContext symbolLiteral() {
-    dynamic _localctx = SymbolLiteralContext(context, state);
+    var _localctx = SymbolLiteralContext(context, state);
     enterRule(_localctx, 430, RULE_symbolLiteral);
     try {
       int _alt;
@@ -8504,7 +8505,7 @@ class DartParser extends Parser {
   }
 
   SingleStringWithoutInterpolationContext singleStringWithoutInterpolation() {
-    dynamic _localctx = SingleStringWithoutInterpolationContext(context, state);
+    var _localctx = SingleStringWithoutInterpolationContext(context, state);
     enterRule(_localctx, 432, RULE_singleStringWithoutInterpolation);
     int _la;
     try {
@@ -8529,7 +8530,7 @@ class DartParser extends Parser {
   }
 
   SingleLineStringContext singleLineString() {
-    dynamic _localctx = SingleLineStringContext(context, state);
+    var _localctx = SingleLineStringContext(context, state);
     enterRule(_localctx, 434, RULE_singleLineString);
     int _la;
     try {
@@ -8607,7 +8608,7 @@ class DartParser extends Parser {
   }
 
   MultiLineStringContext multiLineString() {
-    dynamic _localctx = MultiLineStringContext(context, state);
+    var _localctx = MultiLineStringContext(context, state);
     enterRule(_localctx, 436, RULE_multiLineString);
     int _la;
     try {
@@ -8685,7 +8686,7 @@ class DartParser extends Parser {
   }
 
   ReservedWordContext reservedWord() {
-    dynamic _localctx = ReservedWordContext(context, state);
+    var _localctx = ReservedWordContext(context, state);
     enterRule(_localctx, 438, RULE_reservedWord);
     int _la;
     try {
@@ -8710,7 +8711,7 @@ class DartParser extends Parser {
   }
 
   BuiltInIdentifierContext builtInIdentifier() {
-    dynamic _localctx = BuiltInIdentifierContext(context, state);
+    var _localctx = BuiltInIdentifierContext(context, state);
     enterRule(_localctx, 440, RULE_builtInIdentifier);
     int _la;
     try {
@@ -8765,7 +8766,6 @@ class DartParser extends Parser {
     return true;
   }
 
-  // static const int _serializedATNSegments = 2;
   static final String _serializedATNSegment0 =
     '\u{3}\u{608B}\u{A72A}\u{8133}\u{B9ED}\u{417C}\u{3BE7}\u{7786}\u{5964}'
   	'\u{3}\u{91}\u{9B1}\u{4}\u{2}\u{9}\u{2}\u{4}\u{3}\u{9}\u{3}\u{4}\u{4}'

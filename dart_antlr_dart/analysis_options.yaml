@@ -1,1 +1,2 @@
-include: package:extra_pedantic/extra_pedantic.yaml
+# TODO https://github.com/antlr/antlr4/issues/3481
+# include: package:extra_pedantic/analysis_options.yaml

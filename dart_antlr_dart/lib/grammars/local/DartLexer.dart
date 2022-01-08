@@ -1,4 +1,4 @@
-// Generated from Dart.g by ANTLR 4.9.3
+// Generated from Dart.g4 by ANTLR 4.9.3
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
 import 'package:antlr4/antlr4.dart';
 
@@ -211,7 +211,7 @@ class DartLexer extends Lexer {
   String get serializedATN => _serializedATN;
 
   @override
-  String get grammarFileName => 'Dart.g';
+  String get grammarFileName => 'Dart.g4';
 
   @override
   ATN getATN() { return _ATN; }

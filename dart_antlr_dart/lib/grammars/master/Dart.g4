@@ -71,7 +71,7 @@
 grammar Dart;
 
 @parser::members {
-  String? filePath = null;
+  String? filePath;
   bool errorHasOccurred = false;
 
   /// Must be invoked before the first error is reported for a library.
@@ -1148,7 +1148,7 @@ partHeader
     ;
 
 partDeclaration
-    :    partHeader (metadata topLevelDefinition)* EOF
+    :    partHeader (topLevelDefinition)* EOF
     ;
 
 // In the specification a plain <stringLiteral> is used.
