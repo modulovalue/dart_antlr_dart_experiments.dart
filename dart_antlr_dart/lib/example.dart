@@ -4,31 +4,33 @@ import 'package:dart_antlr_dart/grammars/local/export.dart';
 
 import 'grammars/master/export.dart';
 
-// TODO run against dart tests
-// Run antlr -Dlanguage=Dart Dart.g4.
-void main() async {
-  final code = """
+const invalidCodeA = r"""
 part of lib;
 
 @override
 int? i;
 """;
+
+// TODO run against dart tests
+// Run antlr -Dlanguage=Dart Dart.g4.
+void main() async {
+  const code = invalidCodeA;
   final local = localGrammar.build(code);
   final master = masterGrammar.build(code);
   print("Running master...");
-  run(
+  runLibraryDefinition(
     grammar: master,
   );
   print("...Done");
   print("");
   print("Running Local...");
-  run(
+  runLibraryDefinition(
     grammar: local,
   );
   print("...Done");
 }
 
-void run({
+void runPartDeclaration({
   required final DartGrammar grammar,
 }) {
     grammar.checkVersion();
@@ -36,6 +38,17 @@ void run({
     ParseTreeWalker.DEFAULT.walk(
       TreeShapeListener(),
       grammar.partDeclaration(),
+    );
+}
+
+void runLibraryDefinition({
+  required final DartGrammar grammar,
+}) {
+    grammar.checkVersion();
+    grammar.parser;
+    ParseTreeWalker.DEFAULT.walk(
+      TreeShapeListener(),
+      grammar.libraryDefinition(),
     );
 }
 

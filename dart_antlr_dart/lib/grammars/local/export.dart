@@ -27,6 +27,7 @@ final DartGrammarFactory localGrammar = DartGrammarFactory(
         DartParser.checkVersion();
       },
       partDeclaration: () => parser.partDeclaration(),
+      libraryDefinition: () => parser.libraryDefinition(),
     );
   },
 );

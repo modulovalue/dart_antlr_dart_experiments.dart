@@ -27,6 +27,7 @@ final DartGrammarFactory masterGrammar = DartGrammarFactory(
         DartParser.checkVersion();
       },
       partDeclaration: () => parser.partDeclaration(),
+      libraryDefinition: () => parser.libraryDefinition(),
     );
   },
 );
