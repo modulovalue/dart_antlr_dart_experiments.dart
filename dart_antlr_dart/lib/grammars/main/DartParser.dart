@@ -1,5 +1,5 @@
 // Generated from Dart.g4 by ANTLR 4.9.3
-// ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes, unused_field
+// ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
 import 'package:antlr4/antlr4.dart';
 
 import 'DartListener.dart';
@@ -272,7 +272,7 @@ class DartParser extends Parser {
   }
 
 
-    String? filePath = null;
+    String? filePath;
     bool errorHasOccurred = false;
 
     /// Must be invoked before the first error is reported for a library.
@@ -8763,6 +8763,7 @@ class DartParser extends Parser {
     return true;
   }
 
+  // ignore: unused_field
   static const int _serializedATNSegments = 2;
   static final String _serializedATNSegment0 =
     '\u{3}\u{608B}\u{A72A}\u{8133}\u{B9ED}\u{417C}\u{3BE7}\u{7786}\u{5964}'

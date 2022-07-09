@@ -407,8 +407,8 @@ operatorSignature
 operator
     :    '~'
     |    binaryOperator
-    |    '[' ']'
-    |    '[' ']' '='
+    |    '[]'
+    |    '[]='
     ;
 
 binaryOperator
@@ -728,8 +728,8 @@ compoundAssignmentOperator
     |    '+='
     |    '-='
     |    '<<='
-    |    '>' '>' '>' '='
-    |    '>' '>' '='
+    |    '>>>='
+    |    '>>='
     |    '&='
     |    '^='
     |    '|='
@@ -770,7 +770,7 @@ relationalExpression
     ;
 
 relationalOperator
-    :    '>' '='
+    :    '>='
     |    '>'
     |    '<='
     |    '<'
@@ -804,8 +804,8 @@ shiftExpression
 
 shiftOperator
     :    '<<'
-    |    '>' '>' '>'
-    |    '>' '>'
+    |    '>>>'
+    |    '>>'
     ;
 
 additiveExpression

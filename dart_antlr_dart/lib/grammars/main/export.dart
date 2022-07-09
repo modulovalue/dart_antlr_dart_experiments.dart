@@ -7,7 +7,7 @@ import 'DartParser.dart';
 export 'DartLexer.dart';
 export 'DartParser.dart';
 
-DartGrammarFactory local_grammar(
+DartGrammarFactory main_grammar(
   final ErrorStrategy error_strategy,
 ) =>
     DartGrammarFactory(
