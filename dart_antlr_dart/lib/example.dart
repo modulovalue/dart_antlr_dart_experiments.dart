@@ -10,15 +10,14 @@ import 'grammars/main/export.dart';
 void main() async {
   final code_set = [
     _CodeFile(
-      style: _Style.part,
-      expect_main: _Expectation.no_error,
-      expect_local: _Expectation.no_error,
-      name: "missing metadata for top level declarations in parts.",
-      code: r"""
-part of lib;
+      style: _Style.library,
+      expect_main: _Expectation.has_error,
+      expect_local: _Expectation.has_error,
+      name: "feff",
+      code: """
+\uFEFF
 
-@override
-int? i;
+part of 'foo';
 """,
     ),
     _CodeFile(
@@ -27,77 +26,100 @@ int? i;
       expect_local: _Expectation.has_error,
       name: "#[]",
       code: r"""
-void main() {
-  #[ ];
-}
+import 'a' if (b == "c $d") d;
 """,
     ),
-    _CodeFile(
-      style: _Style.library,
-      expect_main: _Expectation.has_error,
-      expect_local: _Expectation.has_error,
-      name: "#[]=",
-      code: r"""
-void main() {
-  #[ ] =;
-}
-""",
-    ),
-    _CodeFile(
-      style: _Style.library,
-      expect_main: _Expectation.has_error,
-      expect_local: _Expectation.has_error,
-      name: ">>>=",
-      code: r"""
-void main() {
-  a > > > = 2;
-}
-""",
-    ),
-    _CodeFile(
-      style: _Style.library,
-      expect_main: _Expectation.has_error,
-      expect_local: _Expectation.has_error,
-      name: ">>=",
-      code: r"""
-void main() {
-  a > > = 2;
-}
-""",
-    ),
-    _CodeFile(
-      style: _Style.library,
-      expect_main: _Expectation.has_error,
-      expect_local: _Expectation.has_error,
-      name: ">=",
-      code: r"""
-void main() {
-  a > = 2;
-}
-""",
-    ),
-    _CodeFile(
-      style: _Style.library,
-      expect_main: _Expectation.has_error,
-      expect_local: _Expectation.has_error,
-      name: ">>>",
-      code: r"""
-void main() {
-  2 > > > 2;
-}
-""",
-    ),
-    _CodeFile(
-      style: _Style.library,
-      expect_main: _Expectation.has_error,
-      expect_local: _Expectation.has_error,
-      name: ">>",
-      code: r"""
-void main() {
-  2 > > 2;
-}
-""",
-    ),
+    // region resolved
+//     _CodeFile(
+//       style: _Style.part,
+//       expect_main: _Expectation.no_error,
+//       expect_local: _Expectation.no_error,
+//       name: "missing metadata for top level declarations in parts.",
+//       code: r"""
+// part of lib;
+//
+// @override
+// int? i;
+// """,
+//     ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: "#[]",
+//       code: r"""
+// void main() {
+//   #[ ];
+// }
+// """,
+//     ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: "#[]=",
+//       code: r"""
+// void main() {
+//   #[ ] =;
+// }
+// """,
+//     ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: ">>>=",
+//       code: r"""
+// void main() {
+//   a > > > = 2;
+// }
+// """,
+//     ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: ">>=",
+//       code: r"""
+// void main() {
+//   a > > = 2;
+// }
+// """,
+//     ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: ">=",
+//       code: r"""
+// void main() {
+//   a > = 2;
+// }
+// """,
+//     ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: ">>>",
+//       code: r"""
+// void main() {
+//   2 > > > 2;
+// }
+// """,
+//     ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: ">>",
+//       code: r"""
+// void main() {
+//   2 > > 2;
+// }
+// """,
+//     ),
+  // endregion
   ];
   _pretty_output(
     {
