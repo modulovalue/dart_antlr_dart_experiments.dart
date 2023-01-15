@@ -41,6 +41,19 @@ class Foo {}
     grammar_factory: main_grammar,
     select_root: (final a) => a.libraryDefinition(),
   );
+  print(
+    "=== type arguments library ===",
+  );
+  _run(
+    code: """
+@Foo<int>()
+class Foo<T> {
+  const Foo();
+}
+""",
+    grammar_factory: main_grammar,
+    select_root: (final a) => a.libraryDefinition(),
+  );
 }
 
 // region internal

@@ -9,29 +9,30 @@ export 'DartParser.dart';
 
 DartGrammarFactory main_grammar(
   final ErrorStrategy error_strategy,
-) =>
-    DartGrammarFactory(
-      build: (final sourceText) {
-        final lexer = DartLexer(
-          InputStream.fromString(
-            sourceText,
-          ),
-        );
-        final parser = DartParser(
-          CommonTokenStream(
-            lexer,
-          ),
-        );
-        parser.errorHandler = error_strategy;
-        return DartGrammar(
-          lexer: lexer,
-          parser: parser,
-          checkVersion: () {
-            DartLexer.checkVersion();
-            DartParser.checkVersion();
-          },
-          partDeclaration: () => parser.partDeclaration(),
-          libraryDefinition: () => parser.libraryDefinition(),
-        );
-      },
-    );
+) {
+  return DartGrammarFactory(
+    build: (final sourceText) {
+      final lexer = DartLexer(
+        InputStream.fromString(
+          sourceText,
+        ),
+      );
+      final parser = DartParser(
+        CommonTokenStream(
+          lexer,
+        ),
+      );
+      parser.errorHandler = error_strategy;
+      return DartGrammar(
+        lexer: lexer,
+        parser: parser,
+        checkVersion: () {
+          DartLexer.checkVersion();
+          DartParser.checkVersion();
+        },
+        partDeclaration: () => parser.partDeclaration(),
+        libraryDefinition: () => parser.libraryDefinition(),
+      );
+    },
+  );
+}
