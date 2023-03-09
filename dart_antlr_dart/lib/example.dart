@@ -9,26 +9,26 @@ import 'grammars/main/export.dart';
 // TODO run against dart tests see: https://github.com/dart-lang/language/issues/1341#issuecomment-736703781
 void main() async {
   final code_set = [
-    _CodeFile(
-      style: _Style.library,
-      expect_main: _Expectation.has_error,
-      expect_local: _Expectation.has_error,
-      name: "feff",
-      code: """
-\uFEFF
-
-part of 'foo';
-""",
-    ),
-    _CodeFile(
-      style: _Style.library,
-      expect_main: _Expectation.has_error,
-      expect_local: _Expectation.has_error,
-      name: "#[]",
-      code: r"""
-import 'a' if (b == "c $d") d;
-""",
-    ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: "feff",
+//       code: """
+// \uFEFF
+//
+// part of 'foo';
+// """,
+//     ),
+//     _CodeFile(
+//       style: _Style.library,
+//       expect_main: _Expectation.has_error,
+//       expect_local: _Expectation.has_error,
+//       name: "#[]",
+//       code: r"""
+// import 'a' if (b == "c $d") d;
+// """,
+//     ),
     // region resolved
 //     _CodeFile(
 //       style: _Style.part,
@@ -120,6 +120,19 @@ import 'a' if (b == "c $d") d;
 // """,
 //     ),
   // endregion
+    _CodeFile(
+      style: _Style.library,
+      expect_main: _Expectation.no_error,
+      expect_local: _Expectation.no_error,
+      name: "feff",
+      code: """
+class Foo {
+  void bar() {
+    super is int;
+  }
+}
+""",
+    ),
   ];
   _pretty_output(
     {
