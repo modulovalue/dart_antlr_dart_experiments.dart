@@ -4,7 +4,7 @@ class DartGrammarFactory {
   final DartGrammar Function(String sourceText) build;
 
   const DartGrammarFactory({
-    required final this.build,
+    required this.build,
   });
 }
 
@@ -12,14 +12,15 @@ class DartGrammar {
   final Lexer lexer;
   final Parser parser;
   final void Function() checkVersion;
+  // TODO use the new start symbol in the updated grammar.
   final ParserRuleContext Function() partDeclaration;
   final ParserRuleContext Function() libraryDefinition;
 
   const DartGrammar({
-    required final this.lexer,
-    required final this.parser,
-    required final this.checkVersion,
-    required final this.partDeclaration,
-    required final this.libraryDefinition,
+    required this.lexer,
+    required this.parser,
+    required this.checkVersion,
+    required this.partDeclaration,
+    required this.libraryDefinition,
   });
 }
