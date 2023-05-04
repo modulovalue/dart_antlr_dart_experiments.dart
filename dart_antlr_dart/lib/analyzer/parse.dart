@@ -1,6 +1,7 @@
 import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/syntactic_entity.dart';
+import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer/source/line_info.dart';
@@ -21,6 +22,7 @@ import 'package:analyzer/src/generated/parser.dart';
 import 'package:analyzer/src/string_source.dart';
 import 'package:pub_semver/pub_semver.dart';
 
+import '../bird.dart';
 import '../grammars/grammar_framework.dart';
 
 void main() {
@@ -28,7 +30,7 @@ void main() {
     dart_source_file: "void main() {}",
   );
   // TODO output errors
-  print(
+  print_string(
     analyzer_parse_tree(
       parsed.unit,
     ),
@@ -41,10 +43,13 @@ String analyzer_parse_tree(
   return tree<SyntacticEntity>(
     root,
     (final a) {
-      return a.runtimeType.toString();
+      if (a is Token) {
+        return "'" + a.lexeme + "' [${a.offset}-${a.end}]";
+      } else {
+        return "<" + a.runtimeType.toString() + "> [${a.offset}-${a.end}]";
+      }
     },
     (final a) {
-      print(a.runtimeType);
       if (a is AstNode) {
         return a.childEntities;
       } else {

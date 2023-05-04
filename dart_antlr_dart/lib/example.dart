@@ -1,5 +1,6 @@
 import 'package:antlr4/antlr4.dart';
 
+import 'bird.dart';
 import 'grammars/grammar_framework.dart';
 import 'grammars/main/export.dart';
 
@@ -82,9 +83,9 @@ void main() async {
   final code = """void main() {}""";
   // region first
   () {
-    final local_errorstrategy = _ErrorStrategyErrorTrackingImpl();
+    final local_errorstrategy = ErrorStrategyErrorTrackingImpl();
     final tree_listener = _TreeShapeListenerErrorTrackingImpl();
-    final grammar = main_grammar(
+    final grammar = antlr_main_grammar(
       local_errorstrategy,
     );
     final parsed = grammar.build(
@@ -96,10 +97,10 @@ void main() async {
       _TreeShapeListenerErrorTrackingImpl(),
       tree,
     );
-    print(
+    print_string(
       "First: tree_listener.encountered_error => ${tree_listener.encountered_error}",
     );
-    print(
+    print_string(
       "First: local_errorstrategy.error_occurred => ${local_errorstrategy.error_occurred}",
     );
   }();
@@ -108,7 +109,7 @@ void main() async {
   () {
     final error_strategya = _ErrorStrategyErrorTrackingAImpl();
     final tree_listenera = _TreeShapeListenerErrorTrackingAImpl();
-    final grammar = main_grammar(
+    final grammar = antlr_main_grammar(
       error_strategya,
     );
     final parsed = grammar.build(
@@ -120,22 +121,23 @@ void main() async {
       tree_listenera,
       tree,
     );
-    print("Second: " + error_strategya.errors.toString());
-    print("Second: " + tree_listenera.errors.toString());
+    print_string("Second: " + error_strategya.errors.toString());
+    print_string("Second: " + tree_listenera.errors.toString());
   }();
   // endregion
   // region run
   () {
-    final grammar = main_grammar(
-      _ErrorStrategyErrorTrackingImpl(),
+    final grammar = antlr_main_grammar(
+      ErrorStrategyErrorTrackingImpl(),
     );
     final parsed = grammar.build(
       code,
     );
-    print(
+    print_string(
       antlr_parse_tree(
         parsed.parser,
         parsed.start(),
+        parsed.lexer,
       ),
     );
   }();
@@ -173,10 +175,10 @@ class _TreeShapeListenerErrorTrackingImpl implements ParseTreeListener {
   ) {}
 }
 
-class _ErrorStrategyErrorTrackingImpl extends DefaultErrorStrategy {
+class ErrorStrategyErrorTrackingImpl extends DefaultErrorStrategy {
   bool error_occurred;
 
-  _ErrorStrategyErrorTrackingImpl() : error_occurred = _did_not_encounter_error;
+  ErrorStrategyErrorTrackingImpl() : error_occurred = _did_not_encounter_error;
 
   void reportError(
     final Parser recognizer,

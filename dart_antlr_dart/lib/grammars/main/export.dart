@@ -8,7 +8,7 @@ export 'gen/DartLexer.dart';
 export 'gen/DartParser.dart';
 
 /// Run 'antlr -Dlanguage=Dart Dart.g4' in gen to regenerate the grammar.
-DartGrammarFactory main_grammar(
+DartGrammarFactory antlr_main_grammar(
   final ErrorStrategy error_strategy,
 ) {
   return DartGrammarFactory(
