@@ -1,4 +1,4 @@
-// Generated from Dart.g4 by ANTLR 4.9.3
+// Generated from Dart.g4 by ANTLR 4.12.0
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
 import 'package:antlr4/antlr4.dart';
 
@@ -10,6 +10,14 @@ import 'DartListener.dart';
 /// which can be extended to create a listener which only needs to handle
 /// a subset of the available methods.
 class DartBaseListener implements DartListener {
+  /// The default implementation does nothing.
+  @override
+  void enterStartSymbol(StartSymbolContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitStartSymbol(StartSymbolContext ctx) {}
+
   /// The default implementation does nothing.
   @override
   void enterLibraryDefinition(LibraryDefinitionContext ctx) {}
@@ -81,14 +89,6 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitFunctionSignature(FunctionSignatureContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void enterFunctionBodyPrefix(FunctionBodyPrefixContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void exitFunctionBodyPrefix(FunctionBodyPrefixContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -196,6 +196,14 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterSuperFormalParameter(SuperFormalParameterContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitSuperFormalParameter(SuperFormalParameterContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterDefaultFormalParameter(DefaultFormalParameterContext ctx) {}
 
   /// The default implementation does nothing.
@@ -228,6 +236,22 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterClassModifiers(ClassModifiersContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitClassModifiers(ClassModifiersContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterMixinClassModifiers(MixinClassModifiersContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitMixinClassModifiers(MixinClassModifiersContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterSuperclass(SuperclassContext ctx) {}
 
   /// The default implementation does nothing.
@@ -252,11 +276,11 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
-  void enterClassMemberDefinition(ClassMemberDefinitionContext ctx) {}
+  void enterClassMemberDeclaration(ClassMemberDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitClassMemberDefinition(ClassMemberDefinitionContext ctx) {}
+  void exitClassMemberDeclaration(ClassMemberDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -276,11 +300,19 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
-  void enterMixinMemberDefinition(MixinMemberDefinitionContext ctx) {}
+  void enterMixinModifier(MixinModifierContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitMixinMemberDefinition(MixinMemberDefinitionContext ctx) {}
+  void exitMixinModifier(MixinModifierContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterMixinMemberDeclaration(MixinMemberDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitMixinMemberDeclaration(MixinMemberDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -385,6 +417,14 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitConstructorName(ConstructorNameContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterIdentifierOrNew(IdentifierOrNewContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitIdentifierOrNew(IdentifierOrNewContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -588,14 +628,6 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
-  void enterStringLiteralWithoutInterpolation(StringLiteralWithoutInterpolationContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void exitStringLiteralWithoutInterpolation(StringLiteralWithoutInterpolationContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
   void enterSetOrMapLiteral(SetOrMapLiteralContext ctx) {}
 
   /// The default implementation does nothing.
@@ -609,6 +641,30 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitListLiteral(ListLiteralContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRecordLiteral(RecordLiteralContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordLiteral(RecordLiteralContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRecordLiteralNoConst(RecordLiteralNoConstContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordLiteralNoConst(RecordLiteralNoConstContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRecordField(RecordFieldContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordField(RecordFieldContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -676,6 +732,22 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterSwitchExpression(SwitchExpressionContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitSwitchExpression(SwitchExpressionContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterSwitchExpressionCase(SwitchExpressionCaseContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitSwitchExpressionCase(SwitchExpressionCaseContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterThrowExpression(ThrowExpressionContext ctx) {}
 
   /// The default implementation does nothing.
@@ -708,14 +780,6 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
-  void enterFunctionExpressionBodyPrefix(FunctionExpressionBodyPrefixContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void exitFunctionExpressionBodyPrefix(FunctionExpressionBodyPrefixContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
   void enterFunctionExpressionWithoutCascade(FunctionExpressionWithoutCascadeContext ctx) {}
 
   /// The default implementation does nothing.
@@ -745,14 +809,6 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitFunctionPrimaryBody(FunctionPrimaryBodyContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void enterFunctionPrimaryBodyPrefix(FunctionPrimaryBodyPrefixContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void exitFunctionPrimaryBodyPrefix(FunctionPrimaryBodyPrefixContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -796,11 +852,11 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
-  void enterNamedArgument(NamedArgumentContext ctx) {}
+  void enterArgument(ArgumentContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitNamedArgument(NamedArgumentContext ctx) {}
+  void exitArgument(ArgumentContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1124,14 +1180,6 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
-  void enterIdentifierNotFUNCTION(IdentifierNotFUNCTIONContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void exitIdentifierNotFUNCTION(IdentifierNotFUNCTIONContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
   void enterIdentifier(IdentifierContext ctx) {}
 
   /// The default implementation does nothing.
@@ -1185,6 +1233,214 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitAsOperator(AsOperatorContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterPattern(PatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitPattern(PatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterLogicalOrPattern(LogicalOrPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitLogicalOrPattern(LogicalOrPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterLogicalAndPattern(LogicalAndPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitLogicalAndPattern(LogicalAndPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRelationalPattern(RelationalPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRelationalPattern(RelationalPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterUnaryPattern(UnaryPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitUnaryPattern(UnaryPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterPrimaryPattern(PrimaryPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitPrimaryPattern(PrimaryPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterCastPattern(CastPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitCastPattern(CastPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterNullCheckPattern(NullCheckPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitNullCheckPattern(NullCheckPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterNullAssertPattern(NullAssertPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitNullAssertPattern(NullAssertPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterConstantPattern(ConstantPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitConstantPattern(ConstantPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterVariablePattern(VariablePatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitVariablePattern(VariablePatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterParenthesizedPattern(ParenthesizedPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitParenthesizedPattern(ParenthesizedPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterListPattern(ListPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitListPattern(ListPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterListPatternElements(ListPatternElementsContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitListPatternElements(ListPatternElementsContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterListPatternElement(ListPatternElementContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitListPatternElement(ListPatternElementContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRestPattern(RestPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRestPattern(RestPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterMapPattern(MapPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitMapPattern(MapPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterMapPatternEntries(MapPatternEntriesContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitMapPatternEntries(MapPatternEntriesContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterMapPatternEntry(MapPatternEntryContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitMapPatternEntry(MapPatternEntryContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRecordPattern(RecordPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordPattern(RecordPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterPatternFields(PatternFieldsContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitPatternFields(PatternFieldsContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterPatternField(PatternFieldContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitPatternField(PatternFieldContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterObjectPattern(ObjectPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitObjectPattern(ObjectPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterPatternVariableDeclaration(PatternVariableDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitPatternVariableDeclaration(PatternVariableDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterOuterPattern(OuterPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitOuterPattern(OuterPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterPatternAssignment(PatternAssignmentContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitPatternAssignment(PatternAssignmentContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1252,6 +1508,14 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterIfCondition(IfConditionContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitIfCondition(IfConditionContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterForStatement(ForStatementContext ctx) {}
 
   /// The default implementation does nothing.
@@ -1300,19 +1564,27 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
-  void enterSwitchCase(SwitchCaseContext ctx) {}
+  void enterSwitchStatementCase(SwitchStatementCaseContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitSwitchCase(SwitchCaseContext ctx) {}
+  void exitSwitchStatementCase(SwitchStatementCaseContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterDefaultCase(DefaultCaseContext ctx) {}
+  void enterGuardedPattern(GuardedPatternContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitDefaultCase(DefaultCaseContext ctx) {}
+  void exitGuardedPattern(GuardedPatternContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterSwitchStatementDefault(SwitchStatementDefaultContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitSwitchStatementDefault(SwitchStatementDefaultContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1337,14 +1609,6 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitOnPart(OnPartContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void enterOnParts(OnPartsContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void exitOnParts(OnPartsContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1604,6 +1868,46 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterRecordType(RecordTypeContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordType(RecordTypeContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRecordTypeFields(RecordTypeFieldsContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordTypeFields(RecordTypeFieldsContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRecordTypeField(RecordTypeFieldContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordTypeField(RecordTypeFieldContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRecordTypeNamedFields(RecordTypeNamedFieldsContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordTypeNamedFields(RecordTypeNamedFieldsContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRecordTypeNamedField(RecordTypeNamedFieldContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRecordTypeNamedField(RecordTypeNamedFieldContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterTypeNotVoidNotFunctionList(TypeNotVoidNotFunctionListContext ctx) {}
 
   /// The default implementation does nothing.
@@ -1740,14 +2044,6 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
-  void enterSingleStringWithoutInterpolation(SingleStringWithoutInterpolationContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
-  void exitSingleStringWithoutInterpolation(SingleStringWithoutInterpolationContext ctx) {}
-
-  /// The default implementation does nothing.
-  @override
   void enterSingleLineString(SingleLineStringContext ctx) {}
 
   /// The default implementation does nothing.
@@ -1777,6 +2073,14 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitBuiltInIdentifier(BuiltInIdentifierContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterOtherIdentifier(OtherIdentifierContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitOtherIdentifier(OtherIdentifierContext ctx) {}
 
   /// The default implementation does nothing.
   @override

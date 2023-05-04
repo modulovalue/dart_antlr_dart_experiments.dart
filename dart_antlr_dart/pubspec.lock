@@ -5,10 +5,10 @@ packages:
     dependency: "direct main"
     description:
       name: antlr4
-      sha256: b633030156dc482562bfbf7dd1552abab91dab41bc68b199ac9153afa0fcd666
+      sha256: aeb591332cd6a32d298389df1ab41f2ce7b117da98c58eae35785ed44ee0abb3
       url: "https://pub.dev"
     source: hosted
-    version: "4.9.3"
+    version: "4.12.0"
   collection:
     dependency: transitive
     description:

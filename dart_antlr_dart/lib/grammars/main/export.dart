@@ -1,12 +1,13 @@
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_antlr_dart/grammars/grammar_framework.dart';
 
-import 'DartLexer.dart';
-import 'DartParser.dart';
+import 'gen/DartLexer.dart';
+import 'gen/DartParser.dart';
 
-export 'DartLexer.dart';
-export 'DartParser.dart';
+export 'gen/DartLexer.dart';
+export 'gen/DartParser.dart';
 
+/// Run 'antlr -Dlanguage=Dart Dart.g4' in gen to regenerate the grammar.
 DartGrammarFactory main_grammar(
   final ErrorStrategy error_strategy,
 ) {
@@ -30,8 +31,9 @@ DartGrammarFactory main_grammar(
           DartLexer.checkVersion();
           DartParser.checkVersion();
         },
-        partDeclaration: () => parser.partDeclaration(),
-        libraryDefinition: () => parser.libraryDefinition(),
+        start: () {
+          return parser.startSymbol();
+        },
       );
     },
   );

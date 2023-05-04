@@ -5,7 +5,7 @@ environment:
   sdk: '>=2.15.0-0 <3.0.0'
 
 dependencies:
-  antlr4: 4.9.3
+  antlr4: ^4.12.0
 
 dev_dependencies:
   extra_pedantic: ^1.5.0
