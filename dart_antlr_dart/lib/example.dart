@@ -3,10 +3,11 @@ import 'package:antlr4/antlr4.dart';
 import 'grammars/grammar_framework.dart';
 import 'grammars/main/export.dart';
 
-// TODO run against dart tests see: https://github.com/dart-lang/language/issues/1341#issuecomment-736703781
 // TODO report remove cascade recursion
+// TODO add dependency on analyzer and add a side by size comparison.
+// TODO report to have a header suitable for running it in a dart target.
+// TODO run against dart tests see: https://github.com/dart-lang/language/issues/1341#issuecomment-736703781
 void main() async {
-  // TODO report to have a dart flavored grammar.
   // region TODO report external constructor
   // Consider the member declaration in the following program:
   //
@@ -78,7 +79,7 @@ void main() async {
   // * f(a<b,c>(d)) could be an invocation of f passing two actual arguments (both relational expressions), but it could also be an invocation of f passing one actual argument which is an invocation of a generic function a passing two actual type arguments and one actual value argument. This ambiguity is specified outside the grammar to be resolved in favor of the second choice.
   // final code = """f(a<b,c>(d))""";
   // endregion
-  final code = """abstract class foo {}""";
+  final code = """void main() {}""";
   // region first
   () {
     final local_errorstrategy = _ErrorStrategyErrorTrackingImpl();
@@ -233,16 +234,16 @@ class _ErrorStrategyErrorTrackingAImpl extends DefaultErrorStrategy {
 }
 // endregion
 
-// TODO use this.
+// region examples
 class Good {
-  /// declarations in part files support leading feffs.
+  /// Declarations in part files support leading feffs.
   static const feff = """
 \uFEFF
 
 part of 'foo';
 """;
 
-  /// declarations in part files support annotations.
+  /// Declarations in part files support annotations.
   static const missing_metadata = r"""
 part of lib;
 
@@ -425,3 +426,4 @@ class Foo {
   int Function()? fn;
 }""";
 }
+// endregion

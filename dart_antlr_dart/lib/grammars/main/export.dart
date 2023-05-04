@@ -12,10 +12,10 @@ DartGrammarFactory main_grammar(
   final ErrorStrategy error_strategy,
 ) {
   return DartGrammarFactory(
-    build: (final sourceText) {
+    build: (final source_text) {
       final lexer = DartLexer(
         InputStream.fromString(
-          sourceText,
+          source_text,
         ),
       );
       final parser = DartParser(
@@ -31,9 +31,7 @@ DartGrammarFactory main_grammar(
           DartLexer.checkVersion();
           DartParser.checkVersion();
         },
-        start: () {
-          return parser.startSymbol();
-        },
+        start: () => parser.startSymbol(),
       );
     },
   );

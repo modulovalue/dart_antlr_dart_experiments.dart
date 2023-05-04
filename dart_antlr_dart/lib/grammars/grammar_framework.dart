@@ -64,7 +64,7 @@ Iterable<String> tree<N>(
     final l = c.length;
     for (var i = 0; i < l; i++) {
       final a = c[i];
-      yield* _draw(a, '$prefix${name == null ? '' : (isLast ? '\t' : '┃\t')}',
+      yield* _draw(a, '$prefix${name == null ? '' : (isLast ? '  ' : '┃  ')}',
           i == l - 1, str(a));
     }
   }
