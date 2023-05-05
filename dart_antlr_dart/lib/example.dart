@@ -1,8 +1,8 @@
 import 'package:antlr4/antlr4.dart';
 
 import 'bird.dart';
-import 'grammars/grammar_framework.dart';
-import 'grammars/main/export.dart';
+import 'parsers/grammar_framework.dart';
+import 'parsers/antlr/main/export.dart';
 
 // TODO report remove cascade recursion
 // TODO add dependency on analyzer and add a side by size comparison.
@@ -429,3 +429,4 @@ class Foo {
 }""";
 }
 // endregion
+

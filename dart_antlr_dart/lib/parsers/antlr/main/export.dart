@@ -1,6 +1,6 @@
 import 'package:antlr4/antlr4.dart';
-import 'package:dart_antlr_dart/grammars/grammar_framework.dart';
 
+import '../../grammar_framework.dart';
 import 'gen/DartLexer.dart';
 import 'gen/DartParser.dart';
 

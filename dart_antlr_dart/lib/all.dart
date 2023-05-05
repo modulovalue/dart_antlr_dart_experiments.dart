@@ -1,11 +1,19 @@
-import 'analyzer/parse.dart';
+import 'parsers/analyzer/parse.dart';
 import 'bird.dart';
 import 'example.dart';
-import 'grammars/grammar_framework.dart';
-import 'grammars/main/export.dart';
+import 'parsers/grammar_framework.dart';
+import 'parsers/antlr/main/export.dart';
 
 void main() {
   print_all(
+//     code: """
+// extension E on int {
+//   void foo() {}
+// }
+// void f() {
+//   E<int>(0).foo();
+// }
+// """,
     code: """
 class Bar {
   int operator [](int index) {
