@@ -1,7 +1,7 @@
 import 'package:antlr4/antlr4.dart';
+import 'package:dart_antlr_dart/parsers/antlr/util.dart';
 
 import 'bird.dart';
-import 'parsers/grammar_framework.dart';
 import 'parsers/antlr/main/export.dart';
 
 // TODO report remove cascade recursion
@@ -91,7 +91,7 @@ void main() async {
     final parsed = grammar.build(
       code,
     );
-    parsed.checkVersion();
+    parsed.check_version();
     final tree = parsed.start();
     ParseTreeWalker.DEFAULT.walk(
       _TreeShapeListenerErrorTrackingImpl(),
@@ -115,7 +115,7 @@ void main() async {
     final parsed = grammar.build(
       code,
     );
-    parsed.checkVersion();
+    parsed.check_version();
     final tree = parsed.start();
     ParseTreeWalker.DEFAULT.walk(
       tree_listenera,

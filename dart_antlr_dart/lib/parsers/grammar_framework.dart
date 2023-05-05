@@ -1,55 +1,23 @@
 import 'package:antlr4/antlr4.dart';
 
-import '../bird.dart';
+class AntlrDartGrammarFactory {
+  final AntlrDartGrammar Function(String source_code) build;
 
-class DartGrammarFactory {
-  final DartGrammar Function(String sourceText) build;
-
-  const DartGrammarFactory({
+  const AntlrDartGrammarFactory({
     required this.build,
   });
 }
 
-class DartGrammar {
+class AntlrDartGrammar {
   final Lexer lexer;
   final Parser parser;
-  final void Function() checkVersion;
+  final void Function() check_version;
   final ParserRuleContext Function() start;
 
-  const DartGrammar({
+  const AntlrDartGrammar({
     required this.lexer,
     required this.parser,
-    required this.checkVersion,
+    required this.check_version,
     required this.start,
   });
-}
-
-String antlr_parse_tree(
-  final Parser parser,
-  final ParseTree root,
-  final Lexer lexer,
-) {
-  return tree<ParseTree>(
-    root,
-    (final a) {
-      final name = Trees.getNodeText(a, ruleNames: parser.ruleNames);
-      if (a is TerminalNode) {
-        return "'" +
-            name +
-            "'"; // TODO doesn't work, tokens are empty, why? [${lexer.allTokens[a.sourceInterval.a].startIndex}-${lexer.allTokens[a.sourceInterval.b].stopIndex}]";
-      } else {
-        return "<" +
-            name +
-            ">"; // TODO doesn't work, tokens are empty, why? [${lexer.allTokens[a.sourceInterval.a].startIndex}-${lexer.allTokens[a.sourceInterval.b].stopIndex}]";
-      }
-    },
-    (final a) sync* {
-      if (a is ParserRuleContext) {
-        final c = a.children;
-        if (c != null) {
-          yield* c;
-        }
-      }
-    },
-  ).join("\n");
 }

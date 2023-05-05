@@ -8,10 +8,10 @@ export 'gen/DartLexer.dart';
 export 'gen/DartParser.dart';
 
 /// Run 'antlr -Dlanguage=Dart Dart.g4' in gen to regenerate the grammar.
-DartGrammarFactory antlr_main_grammar(
+AntlrDartGrammarFactory antlr_main_grammar(
   final ErrorStrategy error_strategy,
 ) {
-  return DartGrammarFactory(
+  return AntlrDartGrammarFactory(
     build: (final source_text) {
       final lexer = DartLexer(
         InputStream.fromString(
@@ -24,10 +24,10 @@ DartGrammarFactory antlr_main_grammar(
         ),
       );
       parser.errorHandler = error_strategy;
-      return DartGrammar(
+      return AntlrDartGrammar(
         lexer: lexer,
         parser: parser,
-        checkVersion: () {
+        check_version: () {
           DartLexer.checkVersion();
           DartParser.checkVersion();
         },

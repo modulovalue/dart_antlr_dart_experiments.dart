@@ -1,7 +1,9 @@
+import 'package:dart_antlr_dart/parsers/analyzer/util.dart';
+import 'package:dart_antlr_dart/parsers/antlr/util.dart';
+
 import 'parsers/analyzer/parse.dart';
 import 'bird.dart';
 import 'example.dart';
-import 'parsers/grammar_framework.dart';
 import 'parsers/antlr/main/export.dart';
 
 void main() {
@@ -14,17 +16,22 @@ void main() {
 //   E<int>(0).foo();
 // }
 // """,
+//     code: """
+// class Bar {
+//   int operator [](int index) {
+//     return 0;
+//   }
+// }
+//
+// class Foo extends Bar {
+//   void a() {
+//     super?[0];
+//   }
+// }
+// """,
     code: """
-class Bar {
-  int operator [](int index) {
-    return 0;
-  }
-}
-
-class Foo extends Bar {
-  void a() {
-    super?[0];
-  }
+void a() {
+  final x = 1 >= 2 is int;
 }
 """,
   );
