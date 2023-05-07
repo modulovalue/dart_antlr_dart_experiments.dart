@@ -2,7 +2,7 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/syntactic_entity.dart';
 import 'package:analyzer/dart/ast/token.dart';
 
-import '../../bird.dart';
+import '../../util/bird.dart';
 
 String analyzer_parse_tree(
   final SyntacticEntity root,

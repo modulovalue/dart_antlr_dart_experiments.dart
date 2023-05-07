@@ -18,28 +18,6 @@ import 'package:analyzer/src/generated/parser.dart';
 
 // ignore: implementation_imports
 import 'package:analyzer/src/string_source.dart';
-import 'package:dart_antlr_dart/parsers/analyzer/util.dart';
-import 'package:pub_semver/pub_semver.dart';
-
-import '../../bird.dart';
-
-void main() {
-  final parsed = parse_dart_file(
-    dart_source_file: """
-extension E on int {
-  void foo() {}
-}
-void f() {
-  E<int>(0).foo();
-}""",
-  );
-  // TODO output errors
-  print_string(
-    analyzer_parse_tree(
-      parsed.unit,
-    ),
-  );
-}
 
 /// Returns the result of parsing the given [dart_source_file] as a compilation unit.
 AnalyzerParseResult parse_dart_file({
@@ -104,12 +82,4 @@ class AnalyzerParseResult {
   });
 }
 
-final ExperimentStatus default_feature_set = ExperimentStatus.fromStrings2(
-  sdkLanguageVersion: Version(2, 16, 0),
-  flags: [
-    Feature.non_nullable.enableString,
-    Feature.nonfunction_type_aliases.enableString,
-    Feature.triple_shift.enableString,
-    Feature.constructor_tearoffs.enableString,
-  ],
-);
+final ExperimentStatus default_feature_set = ExperimentStatus.latestLanguageVersion();

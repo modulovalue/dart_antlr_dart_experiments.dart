@@ -1,38 +1,16 @@
+import 'package:antlr4/antlr4.dart';
 import 'package:dart_antlr_dart/parsers/analyzer/util.dart';
+import 'package:dart_antlr_dart/parsers/antlr/framework.dart';
 import 'package:dart_antlr_dart/parsers/antlr/util.dart';
 
 import 'parsers/analyzer/parse.dart';
-import 'bird.dart';
-import 'example.dart';
+import 'util/bird.dart';
 import 'parsers/antlr/main/export.dart';
 
 void main() {
   print_all(
-//     code: """
-// extension E on int {
-//   void foo() {}
-// }
-// void f() {
-//   E<int>(0).foo();
-// }
-// """,
-//     code: """
-// class Bar {
-//   int operator [](int index) {
-//     return 0;
-//   }
-// }
-//
-// class Foo extends Bar {
-//   void a() {
-//     super?[0];
-//   }
-// }
-// """,
     code: """
-void a() {
-  final x = 1 >= 2 is int;
-}
+void a() { super?[0]; }
 """,
   );
 }
@@ -67,6 +45,26 @@ void print_all({
   final parsed_antlr = grammar.build(
     code,
   );
+  // region second
+  () {
+    final error_strategy = ErrorStrategyErrorTrackingAImpl();
+    final tree_listener = TreeShapeListenerErrorTrackingAImpl();
+    final grammar = antlr_main_grammar(
+      error_strategy,
+    );
+    final parsed = grammar.build(
+      code,
+    );
+    parsed.check_version();
+    final tree = parsed.start();
+    ParseTreeWalker.DEFAULT.walk(
+      tree_listener,
+      tree,
+    );
+    print_string("Errors of type 1: " + error_strategy.errors.toString());
+    print_string("Errors of type 2: " + tree_listener.errors.toString());
+  }();
+  // endregion
   print_string(
     antlr_parse_tree(
       parsed_antlr.parser,
