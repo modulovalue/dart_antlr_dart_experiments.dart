@@ -9,9 +9,11 @@ import 'parsers/antlr/main/export.dart';
 
 void main() {
   print_all(
+    // code: """final a = c(d, (f) => a<S, T>(sink));""",
     code: """
-void a() { super?[0]; }
-""",
+void main() {
+  final (abf: abc) = pi;
+}""",
   );
 }
 
@@ -19,10 +21,10 @@ void print_all({
   required final String code,
 }) {
   // region analyzer
+  print_string(" === Analyzer ===");
   final parsed_analyzer = parse_dart_file(
     dart_source_file: code,
   );
-  print_string(" === Analyzer ===");
   // TODO output errors
   final errors = parsed_analyzer.all_errors;
   print_string("Scan errors: ${parsed_analyzer.scan_errors.length}");
@@ -39,12 +41,6 @@ void print_all({
   print_string("-" * 80);
   // region antlr
   print_string(" === ANTLR ===");
-  final grammar = antlr_main_grammar(
-    ErrorStrategyErrorTrackingImpl(),
-  );
-  final parsed_antlr = grammar.build(
-    code,
-  );
   // region second
   () {
     final error_strategy = ErrorStrategyErrorTrackingAImpl();
@@ -65,12 +61,22 @@ void print_all({
     print_string("Errors of type 2: " + tree_listener.errors.toString());
   }();
   // endregion
-  print_string(
-    antlr_parse_tree(
-      parsed_antlr.parser,
-      parsed_antlr.start(),
-      parsed_antlr.lexer,
-    ),
-  );
+  // region first
+  () {
+    final grammar = antlr_main_grammar(
+      ErrorStrategyErrorTrackingImpl(),
+    );
+    final parsed_antlr = grammar.build(
+      code,
+    );
+    print_string(
+      antlr_parse_tree(
+        parsed_antlr.parser,
+        parsed_antlr.start(),
+        parsed_antlr.lexer,
+      ),
+    );
+  }();
+  // endregion
   // endregion
 }
