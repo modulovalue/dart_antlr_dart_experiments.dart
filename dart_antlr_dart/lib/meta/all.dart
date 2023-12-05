@@ -9,10 +9,8 @@ import '../parsers/antlr/main/export.dart';
 
 void main() {
   print_all(
-    code: """
-void main() {
-  if ((0,) case const ((0,))) print("foo");
-}
+    code: """   
+@Foo (a, b) foo() {}
 """,
   );
 }

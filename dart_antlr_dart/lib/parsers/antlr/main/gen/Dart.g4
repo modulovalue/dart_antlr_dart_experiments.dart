@@ -153,11 +153,18 @@ grammar Dart;
   void endFunction() { asyncEtcAreKeywords.removeLast(); }
 
   // Whether we can recognize AWAIT/YIELD as an identifier/typeIdentifier.
-  bool asyncEtcPredicate(int tokenId) {
+  bool asyncEtcPredicate() {
+    final tokenId = currentToken.type;
     if (tokenId == TOKEN_AWAIT || tokenId == TOKEN_YIELD) {
       return !asyncEtcAreKeywords.last;
     }
     return false;
+  }
+
+  // Whether there's no skipped token between the previous and
+  // the current token.
+  bool isNoSkip() {
+    return tokenStream.LT(-1)!.stopIndex + 1 == tokenStream.LT(1)!.startIndex;
   }
 }
 
@@ -185,6 +192,21 @@ grammar Dart;
   bool currentBraceLevel(int braceLevel) {
     if (braceLevels.isEmpty) return false;
     return braceLevels.last == braceLevel;
+  }
+  bool currentBraceLevelNormal() {
+    return currentBraceLevel(BRACE_NORMAL);
+  }
+  bool currentBraceLevelSingleQuote() {
+    return currentBraceLevel(BRACE_SINGLE);
+  }
+  bool currentBraceLevelDoubleQuote() {
+    return currentBraceLevel(BRACE_DOUBLE);
+  }
+  bool currentBraceLevelThreeSingleQuotes() {
+    return currentBraceLevel(BRACE_THREE_SINGLE);
+  }
+  bool currentBraceLevelThreeDoubleQuotes() {
+    return currentBraceLevel(BRACE_THREE_DOUBLE);
   }
 
   // Use this to indicate that we are now entering a specific '{...}'.
@@ -478,9 +500,10 @@ operatorSignature
 operator
     :    '~'
     |    binaryOperator
-    |    '[' ']'
-    |    '[' ']' '='
+    |    '[' noSkip ']'
+    |    '[' noSkip ']' noSkip '='
     ;
+
 
 binaryOperator
     :    multiplicativeOperator
@@ -621,7 +644,7 @@ primary
 
 constructorInvocation
     :    typeName typeArguments '.' NEW arguments
-    |    typeName '.' NEW arguments
+    |    typeName               '.' NEW arguments
     ;
 
 literal
@@ -819,8 +842,8 @@ compoundAssignmentOperator
     |    '+='
     |    '-='
     |    '<<='
-    |    '>' '>' '>' '='
-    |    '>' '>' '='
+    |    '>' noSkip '>' noSkip '>' noSkip '='
+    |    '>' noSkip '>' noSkip '='
     |    '&='
     |    '^='
     |    '|='
@@ -861,7 +884,7 @@ relationalExpression
     ;
 
 relationalOperator
-    :    '>' '='
+    :    '>' noSkip '='
     |    '>'
     |    '<='
     |    '<'
@@ -895,8 +918,8 @@ shiftExpression
 
 shiftOperator
     :    '<<'
-    |    '>' '>' '>'
-    |    '>' '>'
+    |    '>' noSkip '>' noSkip '>'
+    |    '>' noSkip '>'
     ;
 
 additiveExpression
@@ -1001,7 +1024,7 @@ identifier
     :    IDENTIFIER
     |    builtInIdentifier
     |    otherIdentifier
-    |    { asyncEtcPredicate(currentToken.type) }? (AWAIT|YIELD)
+    |    { asyncEtcPredicate() }? (AWAIT|YIELD)
     ;
 
 qualifiedName
@@ -1013,7 +1036,7 @@ typeIdentifier
     :    IDENTIFIER
     |    DYNAMIC // Built-in identifier that can be used as a type.
     |    otherIdentifier // Occur in grammar rules, are not built-in.
-    |    { asyncEtcPredicate(currentToken.type) }? (AWAIT|YIELD)
+    |    { asyncEtcPredicate() }? (AWAIT|YIELD)
     ;
 
 typeTest
@@ -1612,6 +1635,10 @@ otherIdentifier
     |    WHEN
     ;
 
+noSkip
+    :    { isNoSkip() }?
+    ;
+
 // ---------------------------------------- Lexer rules.
 
 fragment
@@ -1982,13 +2009,13 @@ SINGLE_LINE_STRING_SQ_BEGIN_MID
     ;
 
 SINGLE_LINE_STRING_SQ_MID_MID
-    :    { currentBraceLevel(BRACE_SINGLE) }?
+    :    { currentBraceLevelSingleQuote() }?
          { exitBrace(); } '}' STRING_CONTENT_SQ* '${'
          { enterBraceSingleQuote(); }
     ;
 
 SINGLE_LINE_STRING_SQ_MID_END
-    :    { currentBraceLevel(BRACE_SINGLE) }?
+    :    { currentBraceLevelSingleQuote() }?
          { exitBrace(); } '}' STRING_CONTENT_SQ* '\''
     ;
 
@@ -2007,13 +2034,13 @@ SINGLE_LINE_STRING_DQ_BEGIN_MID
     ;
 
 SINGLE_LINE_STRING_DQ_MID_MID
-    :    { currentBraceLevel(BRACE_DOUBLE) }?
+    :    { currentBraceLevelDoubleQuote() }?
          { exitBrace(); } '}' STRING_CONTENT_DQ* '${'
          { enterBraceDoubleQuote(); }
     ;
 
 SINGLE_LINE_STRING_DQ_MID_END
-    :    { currentBraceLevel(BRACE_DOUBLE) }?
+    :    { currentBraceLevelDoubleQuote() }?
          { exitBrace(); } '}' STRING_CONTENT_DQ* '"'
     ;
 
@@ -2044,13 +2071,13 @@ MULTI_LINE_STRING_SQ_BEGIN_MID
     ;
 
 MULTI_LINE_STRING_SQ_MID_MID
-    :    { currentBraceLevel(BRACE_THREE_SINGLE) }?
+    :    { currentBraceLevelThreeSingleQuotes() }?
          { exitBrace(); } '}' STRING_CONTENT_TSQ* QUOTES_SQ '${'
          { enterBraceThreeSingleQuotes(); }
     ;
 
 MULTI_LINE_STRING_SQ_MID_END
-    :    { currentBraceLevel(BRACE_THREE_SINGLE) }?
+    :    { currentBraceLevelThreeSingleQuotes() }?
          { exitBrace(); } '}' STRING_CONTENT_TSQ* '\'\'\''
     ;
 
@@ -2080,13 +2107,13 @@ MULTI_LINE_STRING_DQ_BEGIN_MID
     ;
 
 MULTI_LINE_STRING_DQ_MID_MID
-    :    { currentBraceLevel(BRACE_THREE_DOUBLE) }?
+    :    { currentBraceLevelThreeDoubleQuotes() }?
          { exitBrace(); } '}' STRING_CONTENT_TDQ* QUOTES_DQ '${'
          { enterBraceThreeDoubleQuotes(); }
     ;
 
 MULTI_LINE_STRING_DQ_MID_END
-    :    { currentBraceLevel(BRACE_THREE_DOUBLE) }?
+    :    { currentBraceLevelThreeDoubleQuotes() }?
          { exitBrace(); } '}' STRING_CONTENT_TDQ* '"""'
     ;
 
@@ -2095,7 +2122,7 @@ LBRACE
     ;
 
 RBRACE
-    :    { currentBraceLevel(BRACE_NORMAL) }? { exitBrace(); } '}'
+    :    { currentBraceLevelNormal() }? { exitBrace(); } '}'
     ;
 
 fragment
@@ -2135,14 +2162,16 @@ IDENTIFIER
     :    IDENTIFIER_START IDENTIFIER_PART*
     ;
 
+SKIPPABLE
+    :    (SINGLE_LINE_COMMENT | MULTI_LINE_COMMENT | WS) { skip(); }
+    ;
+
 SINGLE_LINE_COMMENT
     :    '//' (~('\r' | '\n'))* NEWLINE?
-         { skip(); }
     ;
 
 MULTI_LINE_COMMENT
     :    '/*' (MULTI_LINE_COMMENT | .)*? '*/'
-         { skip(); }
     ;
 
 fragment
@@ -2156,5 +2185,4 @@ FEFF
 
 WS
     :    (' ' | '\t' | '\r' | '\n')+
-         { skip(); }
     ;

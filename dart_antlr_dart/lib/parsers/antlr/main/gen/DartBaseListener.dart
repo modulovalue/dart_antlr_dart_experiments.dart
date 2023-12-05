@@ -2084,6 +2084,14 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterNoSkip(NoSkipContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitNoSkip(NoSkipContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterEveryRule(ParserRuleContext ctx) {}
 
   /// The default implementation does nothing.

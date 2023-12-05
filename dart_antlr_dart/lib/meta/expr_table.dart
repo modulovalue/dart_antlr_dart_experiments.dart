@@ -138,7 +138,9 @@ void main() {
             (x.my == x.analyzer ? "-" : "↯"),
     "}",
   ];
-  print_string(res.join("\n"));
+  print_string(
+    res.join("\n"),
+  );
 }
 
 class _Entry {
