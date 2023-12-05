@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer/source/line_info.dart';
@@ -54,6 +55,16 @@ AnalyzerParseResult parse_dart_file({
     token,
   );
   return AnalyzerParseResult(
+    all_tokens: () {
+      return () sync* {
+        var t = token;
+        yield t;
+        while(t.next!.type != TokenType.EOF) {
+          t = t.next!;
+          yield t;
+        }
+      }().toList();
+    }(),
     parse_errors: parse_error_collector.errors,
     unit: unit,
     line_starts: scanner.lineStarts,
@@ -72,6 +83,7 @@ class AnalyzerParseResult {
   final List<int> line_starts;
   final List<AnalysisError> scan_errors;
   final List<AnalysisError> all_errors;
+  final List<Token> all_tokens;
 
   const AnalyzerParseResult({
     required this.parse_errors,
@@ -79,6 +91,7 @@ class AnalyzerParseResult {
     required this.line_starts,
     required this.scan_errors,
     required this.all_errors,
+    required this.all_tokens,
   });
 }
 

@@ -3,17 +3,17 @@ import 'package:dart_antlr_dart/parsers/analyzer/util.dart';
 import 'package:dart_antlr_dart/parsers/antlr/framework.dart';
 import 'package:dart_antlr_dart/parsers/antlr/util.dart';
 
-import 'parsers/analyzer/parse.dart';
-import 'util/bird.dart';
-import 'parsers/antlr/main/export.dart';
+import '../parsers/analyzer/parse.dart';
+import '../util/bird.dart';
+import '../parsers/antlr/main/export.dart';
 
 void main() {
   print_all(
-    // code: """final a = c(d, (f) => a<S, T>(sink));""",
     code: """
 void main() {
-  final (abf: abc) = pi;
-}""",
+  if ((0,) case const ((0,))) print("foo");
+}
+""",
   );
 }
 
@@ -25,7 +25,6 @@ void print_all({
   final parsed_analyzer = parse_dart_file(
     dart_source_file: code,
   );
-  // TODO output errors
   final errors = parsed_analyzer.all_errors;
   print_string("Scan errors: ${parsed_analyzer.scan_errors.length}");
   print_string("Parse errors: ${parsed_analyzer.parse_errors.length}");

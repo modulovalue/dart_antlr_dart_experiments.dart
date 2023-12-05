@@ -1001,7 +1001,7 @@ identifier
     :    IDENTIFIER
     |    builtInIdentifier
     |    otherIdentifier
-    |    { asyncEtcPredicate(currentToken.getType()) }? (AWAIT|YIELD)
+    |    { asyncEtcPredicate(currentToken.type) }? (AWAIT|YIELD)
     ;
 
 qualifiedName
@@ -1013,7 +1013,7 @@ typeIdentifier
     :    IDENTIFIER
     |    DYNAMIC // Built-in identifier that can be used as a type.
     |    otherIdentifier // Occur in grammar rules, are not built-in.
-    |    { asyncEtcPredicate(currentToken.getType()) }? (AWAIT|YIELD)
+    |    { asyncEtcPredicate(currentToken.type) }? (AWAIT|YIELD)
     ;
 
 typeTest

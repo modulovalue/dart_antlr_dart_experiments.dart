@@ -24,6 +24,7 @@ class AntlrDartGrammar {
     required this.start,
   });
 }
+
 // endregion
 
 // region framework 1

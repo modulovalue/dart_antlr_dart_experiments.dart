@@ -1,4 +1,4 @@
-// Generated from Dart.g4 by ANTLR 4.12.0
+// Generated from Dart.g4 by ANTLR 4.13.0
 // ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
 import 'package:antlr4/antlr4.dart';
 
@@ -100,7 +100,7 @@ const int RULE_startSymbol = 0, RULE_libraryDefinition = 1, RULE_topLevelDefinit
           RULE_symbolLiteral = 253, RULE_singleLineString = 254, RULE_multiLineString = 255, 
           RULE_reservedWord = 256, RULE_builtInIdentifier = 257, RULE_otherIdentifier = 258;
 class DartParser extends Parser {
-  static final checkVersion = () => RuntimeMetaData.checkVersion('4.12.0', RuntimeMetaData.VERSION);
+  static final checkVersion = () => RuntimeMetaData.checkVersion('4.13.0', RuntimeMetaData.VERSION);
   static const int TOKEN_EOF = IntStream.EOF;
 
   static final List<DFA> _decisionToDFA = List.generate(
@@ -6232,7 +6232,7 @@ class DartParser extends Parser {
         enterOuterAlt(_localctx, 4);
         state = 1956;
         if (!( asyncEtcPredicate(currentToken.type) )) {
-          throw FailedPredicateException(this, " asyncEtcPredicate(getCurrentToken().getType()) ");
+          throw FailedPredicateException(this, " asyncEtcPredicate(currentToken.type) ");
         }
         state = 1957;
         _la = tokenStream.LA(1)!;
@@ -6322,7 +6322,7 @@ class DartParser extends Parser {
         enterOuterAlt(_localctx, 4);
         state = 1975;
         if (!( asyncEtcPredicate(currentToken.type) )) {
-          throw FailedPredicateException(this, " asyncEtcPredicate(getCurrentToken().getType()) ");
+          throw FailedPredicateException(this, " asyncEtcPredicate(currentToken.type) ");
         }
         state = 1976;
         _la = tokenStream.LA(1)!;
