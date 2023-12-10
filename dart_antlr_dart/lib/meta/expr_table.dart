@@ -98,14 +98,12 @@ void main() {
   ];
   final res = [
     "void foo() {",
-    ((("  // ".padRight(40) + "ANTLR").padRight(60) + "Analyzer").padRight(80) + "My Assumption").padRight(100) +
-        "Clash",
+    ((("  // ".padRight(40) + "ANTLR").padRight(60) + "Analyzer").padRight(80) + "My Assumption").padRight(100) + "Clash",
     for (final x in dataset)
       if (x.title)
         "  // " + x.value
       else
-        (((("  " + x.value + "; // ").padRight(40) +
-                                    () {
+        (((("  " + x.value + "; // ").padRight(40) + () {
                                       if (x.antlr == null) {
                                         return "";
                                       } else {
@@ -115,27 +113,19 @@ void main() {
                                           return "Error";
                                         }
                                       }
-                                    }())
-                                .padRight(60) +
-                            () {
-                              if (x.analyzer == null) {
-                                return "";
-                              } else {
-                                if (x.analyzer!) {
-                                  return "Success";
-                                } else {
-                                  return "Error";
-                                }
-                              }
-                            }())
-                        .padRight(80) +
-                    (x.my == null
-                        ? ""
-                        : x.my!
-                            ? "Success"
-                            : "Error"))
-                .padRight(100) +
-            (x.my == x.analyzer ? "-" : "↯"),
+                                    }()).padRight(60) +
+        () {
+          if (x.analyzer == null) {
+            return "";
+          } else {
+            if (x.analyzer!) {
+              return "Success";
+            } else {
+              return "Error";
+            }
+          }
+        }()).padRight(80) + (x.my == null ? "" : x.my! ? "Success" : "Error")).padRight(100) +
+        (x.my == x.analyzer ? "-" : "↯"),
     "}",
   ];
   print_string(

@@ -1819,11 +1819,4 @@ abstract class DartListener extends ParseTreeListener {
   /// Exit a parse tree produced by [DartParser.otherIdentifier].
   /// [ctx] the parse tree
   void exitOtherIdentifier(OtherIdentifierContext ctx);
-
-  /// Enter a parse tree produced by [DartParser.noSkip].
-  /// [ctx] the parse tree
-  void enterNoSkip(NoSkipContext ctx);
-  /// Exit a parse tree produced by [DartParser.noSkip].
-  /// [ctx] the parse tree
-  void exitNoSkip(NoSkipContext ctx);
 }

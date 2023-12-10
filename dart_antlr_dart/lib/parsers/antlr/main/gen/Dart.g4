@@ -162,7 +162,7 @@ grammar Dart;
   }
 
   // Whether there's no skipped token between the previous and
-  // the current token.
+  // the current visible token.
   bool isNoSkip() {
     return tokenStream.LT(-1)!.stopIndex + 1 == tokenStream.LT(1)!.startIndex;
   }
@@ -381,7 +381,7 @@ defaultFormalParameter
     ;
 
 defaultNamedParameter
-    :    REQUIRED? normalFormalParameter ((':' | '=') expression)?
+    :    metadata REQUIRED? normalFormalParameterNoMetadata ((':' | '=') expression)?
     ;
 
 typeWithParameters
@@ -500,8 +500,8 @@ operatorSignature
 operator
     :    '~'
     |    binaryOperator
-    |    '[' noSkip ']'
-    |    '[' noSkip ']' noSkip '='
+    |    '[' { isNoSkip() }? ']'
+    |    '[' { isNoSkip() }? ']' { isNoSkip() }? '='
     ;
 
 
@@ -556,7 +556,9 @@ fieldInitializer
     ;
 
 initializerExpression
-    :    conditionalExpression
+    :    throwExpression
+    |    assignableExpression assignmentOperator expression
+    |    conditionalExpression
     |    cascade
     ;
 
@@ -602,7 +604,7 @@ metadata
     ;
 
 metadatum
-    :    constructorDesignation arguments
+    :    constructorDesignation { isNoSkip() }? arguments
     |    identifier
     |    qualifiedName
     ;
@@ -821,7 +823,7 @@ cascadeSelector
     ;
 
 cascadeSectionTail
-    :    cascadeAssignment
+    :                                  cascadeAssignment
     |    selector* (assignableSelector cascadeAssignment)?
     ;
 
@@ -842,8 +844,8 @@ compoundAssignmentOperator
     |    '+='
     |    '-='
     |    '<<='
-    |    '>' noSkip '>' noSkip '>' noSkip '='
-    |    '>' noSkip '>' noSkip '='
+    |    '>' { isNoSkip() }? '>' { isNoSkip() }? '>' { isNoSkip() }? '='
+    |    '>' { isNoSkip() }? '>' { isNoSkip() }? '='
     |    '&='
     |    '^='
     |    '|='
@@ -884,7 +886,7 @@ relationalExpression
     ;
 
 relationalOperator
-    :    '>' noSkip '='
+    :    '>' { (){ print("SHIFTEQ ${isNoSkip()}"); return isNoSkip(); }() }? '='
     |    '>'
     |    '<='
     |    '<'
@@ -918,8 +920,8 @@ shiftExpression
 
 shiftOperator
     :    '<<'
-    |    '>' noSkip '>' noSkip '>'
-    |    '>' noSkip '>'
+    |    '>' { isNoSkip() }? '>' { isNoSkip() }? '>'
+    |    '>' { (){ print("SHIFT SHIFT: ${isNoSkip()}"); return isNoSkip(); }() }? '>'
     ;
 
 additiveExpression
@@ -1028,7 +1030,7 @@ identifier
     ;
 
 qualifiedName
-    :    typeIdentifier '.' identifierOrNew
+    :                       typeIdentifier '.' identifierOrNew
     |    typeIdentifier '.' typeIdentifier '.' identifierOrNew
     ;
 
@@ -1110,8 +1112,8 @@ constantPattern
     |    identifier
     |    qualifiedName
     |    constObjectExpression
-    |    CONST typeArguments? '[' elements? ']'
-    |    CONST typeArguments? LBRACE elements? RBRACE
+    |    CONST typeArguments? '[' elements? ']' // const List of elements
+    |    CONST typeArguments? LBRACE elements? RBRACE // const setormap of elements
     |    CONST '(' expression ')'
     ;
 
@@ -1422,7 +1424,7 @@ typeNotFunction
 
 typeNotVoidNotFunction
     :    typeName typeArguments?
-    |    FUNCTION
+    |    (typeIdentifier '.')? FUNCTION
     ;
 
 typeName
@@ -1633,10 +1635,6 @@ otherIdentifier
     |    SHOW
     |    SYNC
     |    WHEN
-    ;
-
-noSkip
-    :    { isNoSkip() }?
     ;
 
 // ---------------------------------------- Lexer rules.

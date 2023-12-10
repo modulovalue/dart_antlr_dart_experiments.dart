@@ -24,7 +24,6 @@ class AntlrDartGrammar {
     required this.start,
   });
 }
-
 // endregion
 
 // region framework 1
@@ -36,26 +35,26 @@ class TreeShapeListenerErrorTrackingImpl implements ParseTreeListener {
 
   @override
   void enterEveryRule(
-      final ParserRuleContext ctx,
-      ) {}
+    final ParserRuleContext ctx,
+  ) {}
 
   @override
   void exitEveryRule(
-      final ParserRuleContext node,
-      ) {}
+    final ParserRuleContext node,
+  ) {}
 
   @override
   void visitErrorNode(
-      final ErrorNode node,
-      ) {
+    final ErrorNode node,
+  ) {
     // TODO not all errors are being reported here?
     encountered_error = _did_encounter_error;
   }
 
   @override
   void visitTerminal(
-      final TerminalNode node,
-      ) {}
+    final TerminalNode node,
+  ) {}
 }
 
 class ErrorStrategyErrorTrackingImpl extends DefaultErrorStrategy {
@@ -64,16 +63,16 @@ class ErrorStrategyErrorTrackingImpl extends DefaultErrorStrategy {
   ErrorStrategyErrorTrackingImpl() : error_occurred = _did_not_encounter_error;
 
   void reportError(
-      final Parser recognizer,
-      final RecognitionException<IntStream> e,
-      ) {
+    final Parser recognizer,
+    final RecognitionException<IntStream> e,
+  ) {
     error_occurred = _did_encounter_error;
   }
 }
 
-final _did_encounter_error = true;
+final bool _did_encounter_error = true;
 
-final _did_not_encounter_error = false;
+final bool _did_not_encounter_error = false;
 // endregion
 
 // region framework 2
@@ -84,25 +83,25 @@ class TreeShapeListenerErrorTrackingAImpl implements ParseTreeListener {
 
   @override
   void enterEveryRule(
-      final ParserRuleContext ctx,
-      ) {}
+    final ParserRuleContext ctx,
+  ) {}
 
   @override
   void exitEveryRule(
-      final ParserRuleContext node,
-      ) {}
+    final ParserRuleContext node,
+  ) {}
 
   @override
   void visitErrorNode(
-      final ErrorNode node,
-      ) {
+    final ErrorNode node,
+  ) {
     errors.add(node);
   }
 
   @override
   void visitTerminal(
-      final TerminalNode node,
-      ) {}
+    final TerminalNode node,
+  ) {}
 }
 
 class ErrorStrategyErrorTrackingAImpl extends DefaultErrorStrategy {
@@ -111,10 +110,12 @@ class ErrorStrategyErrorTrackingAImpl extends DefaultErrorStrategy {
   ErrorStrategyErrorTrackingAImpl() : errors = [];
 
   void reportError(
-      final Parser recognizer,
-      final RecognitionException<IntStream> e,
-      ) {
-    errors.add("${e.offendingToken}");
+    final Parser recognizer,
+    final RecognitionException<IntStream> e,
+  ) {
+    if (e is! FailedPredicateException) {
+      errors.add("${e.offendingToken} ${e}");
+    }
   }
 }
 // endregion
