@@ -1,0 +1,34 @@
+{
+  "roots": [
+    "dart_spec_parser_test"
+  ],
+  "packages": [
+    {
+      "name": "dart_spec_parser_test",
+      "version": "0.0.0",
+      "dependencies": [
+        "antlr4"
+      ],
+      "devDependencies": []
+    },
+    {
+      "name": "antlr4",
+      "version": "4.13.2",
+      "dependencies": [
+        "collection",
+        "logging"
+      ]
+    },
+    {
+      "name": "collection",
+      "version": "1.19.1",
+      "dependencies": []
+    },
+    {
+      "name": "logging",
+      "version": "1.3.0",
+      "dependencies": []
+    }
+  ],
+  "configVersion": 1
+}

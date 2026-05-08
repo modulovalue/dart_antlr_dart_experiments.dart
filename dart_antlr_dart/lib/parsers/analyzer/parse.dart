@@ -59,7 +59,7 @@ AnalyzerParseResult parse_dart_file({
       return () sync* {
         var t = token;
         yield t;
-        while(t.next!.type != TokenType.EOF) {
+        while (t.next!.type != TokenType.EOF) {
           t = t.next!;
           yield t;
         }

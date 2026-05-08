@@ -70,9 +70,9 @@ class ErrorStrategyErrorTrackingImpl extends DefaultErrorStrategy {
   }
 }
 
-final bool _did_encounter_error = true;
+const bool _did_encounter_error = true;
 
-final bool _did_not_encounter_error = false;
+const bool _did_not_encounter_error = false;
 // endregion
 
 // region framework 2
@@ -106,16 +106,24 @@ class TreeShapeListenerErrorTrackingAImpl implements ParseTreeListener {
 
 class ErrorStrategyErrorTrackingAImpl extends DefaultErrorStrategy {
   List<String> errors;
+  List<String> recoveries;
 
-  ErrorStrategyErrorTrackingAImpl() : errors = [];
+  ErrorStrategyErrorTrackingAImpl() : errors = [], recoveries = [];
 
+  @override
   void reportError(
     final Parser recognizer,
     final RecognitionException<IntStream> e,
   ) {
-    if (e is! FailedPredicateException) {
-      errors.add("${e.offendingToken} ${e}");
-    }
+    // Report ALL errors, including FailedPredicateException
+    errors.add("${e.runtimeType}: ${e.message} at ${e.offendingToken}");
+    super.reportError(recognizer, e);
+  }
+
+  @override
+  void recover(Parser recognizer, RecognitionException e) {
+    recoveries.add("Recovery from ${e.runtimeType} at state ${recognizer.state}");
+    super.recover(recognizer, e);
   }
 }
 // endregion

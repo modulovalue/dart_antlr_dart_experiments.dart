@@ -1,8 +1,6 @@
 void print_string(
   final String str,
-) {
-  print(str);
-}
+) => print(str);
 
 Iterable<String> tree<N>(
   final N node,
@@ -23,7 +21,7 @@ Iterable<String> tree<N>(
       final a = c[i];
       yield* _draw(
         a,
-        '$prefix${name == null ? '' : (isLast ? '  ' : '┃  ')}',
+        prefix + (name == null ? '' : (isLast ? '  ' : '┃  ')),
         i == l - 1,
         str(a),
       );

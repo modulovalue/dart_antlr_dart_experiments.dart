@@ -273,6 +273,27 @@ abstract class DartListener extends ParseTreeListener {
   /// [ctx] the parse tree
   void exitMixinMemberDeclaration(MixinMemberDeclarationContext ctx);
 
+  /// Enter a parse tree produced by [DartParser.extensionTypeDeclaration].
+  /// [ctx] the parse tree
+  void enterExtensionTypeDeclaration(ExtensionTypeDeclarationContext ctx);
+  /// Exit a parse tree produced by [DartParser.extensionTypeDeclaration].
+  /// [ctx] the parse tree
+  void exitExtensionTypeDeclaration(ExtensionTypeDeclarationContext ctx);
+
+  /// Enter a parse tree produced by [DartParser.representationDeclaration].
+  /// [ctx] the parse tree
+  void enterRepresentationDeclaration(RepresentationDeclarationContext ctx);
+  /// Exit a parse tree produced by [DartParser.representationDeclaration].
+  /// [ctx] the parse tree
+  void exitRepresentationDeclaration(RepresentationDeclarationContext ctx);
+
+  /// Enter a parse tree produced by [DartParser.extensionTypeMemberDeclaration].
+  /// [ctx] the parse tree
+  void enterExtensionTypeMemberDeclaration(ExtensionTypeMemberDeclarationContext ctx);
+  /// Exit a parse tree produced by [DartParser.extensionTypeMemberDeclaration].
+  /// [ctx] the parse tree
+  void exitExtensionTypeMemberDeclaration(ExtensionTypeMemberDeclarationContext ctx);
+
   /// Enter a parse tree produced by [DartParser.extensionDeclaration].
   /// [ctx] the parse tree
   void enterExtensionDeclaration(ExtensionDeclarationContext ctx);
@@ -847,6 +868,20 @@ abstract class DartListener extends ParseTreeListener {
   /// [ctx] the parse tree
   void exitRelationalExpression(RelationalExpressionContext ctx);
 
+  /// Enter a parse tree produced by [DartParser.typeOperatorTail].
+  /// [ctx] the parse tree
+  void enterTypeOperatorTail(TypeOperatorTailContext ctx);
+  /// Exit a parse tree produced by [DartParser.typeOperatorTail].
+  /// [ctx] the parse tree
+  void exitTypeOperatorTail(TypeOperatorTailContext ctx);
+
+  /// Enter a parse tree produced by [DartParser.relationalOperatorTail].
+  /// [ctx] the parse tree
+  void enterRelationalOperatorTail(RelationalOperatorTailContext ctx);
+  /// Exit a parse tree produced by [DartParser.relationalOperatorTail].
+  /// [ctx] the parse tree
+  void exitRelationalOperatorTail(RelationalOperatorTailContext ctx);
+
   /// Enter a parse tree produced by [DartParser.relationalOperator].
   /// [ctx] the parse tree
   void enterRelationalOperator(RelationalOperatorContext ctx);
@@ -1042,6 +1077,13 @@ abstract class DartListener extends ParseTreeListener {
   /// Exit a parse tree produced by [DartParser.qualifiedName].
   /// [ctx] the parse tree
   void exitQualifiedName(QualifiedNameContext ctx);
+
+  /// Enter a parse tree produced by [DartParser.typeIdentifierNotType].
+  /// [ctx] the parse tree
+  void enterTypeIdentifierNotType(TypeIdentifierNotTypeContext ctx);
+  /// Exit a parse tree produced by [DartParser.typeIdentifierNotType].
+  /// [ctx] the parse tree
+  void exitTypeIdentifierNotType(TypeIdentifierNotTypeContext ctx);
 
   /// Enter a parse tree produced by [DartParser.typeIdentifier].
   /// [ctx] the parse tree
@@ -1603,6 +1645,13 @@ abstract class DartListener extends ParseTreeListener {
   /// [ctx] the parse tree
   void exitTypeNotFunction(TypeNotFunctionContext ctx);
 
+  /// Enter a parse tree produced by [DartParser.typeNamedFunction].
+  /// [ctx] the parse tree
+  void enterTypeNamedFunction(TypeNamedFunctionContext ctx);
+  /// Exit a parse tree produced by [DartParser.typeNamedFunction].
+  /// [ctx] the parse tree
+  void exitTypeNamedFunction(TypeNamedFunctionContext ctx);
+
   /// Enter a parse tree produced by [DartParser.typeNotVoidNotFunction].
   /// [ctx] the parse tree
   void enterTypeNotVoidNotFunction(TypeNotVoidNotFunctionContext ctx);
@@ -1812,6 +1861,13 @@ abstract class DartListener extends ParseTreeListener {
   /// Exit a parse tree produced by [DartParser.builtInIdentifier].
   /// [ctx] the parse tree
   void exitBuiltInIdentifier(BuiltInIdentifierContext ctx);
+
+  /// Enter a parse tree produced by [DartParser.otherIdentifierNotType].
+  /// [ctx] the parse tree
+  void enterOtherIdentifierNotType(OtherIdentifierNotTypeContext ctx);
+  /// Exit a parse tree produced by [DartParser.otherIdentifierNotType].
+  /// [ctx] the parse tree
+  void exitOtherIdentifierNotType(OtherIdentifierNotTypeContext ctx);
 
   /// Enter a parse tree produced by [DartParser.otherIdentifier].
   /// [ctx] the parse tree

@@ -3,6 +3,24 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // CHANGES:
+// v0.41 Fix type operator and relational operator precedence and
+// associativity.
+//
+// v0.40 Implement the "noWs" metadata/record disambiguation rule.
+//
+// v0.39 Translate actions from Java to Dart.
+//
+// v0.38 Broaden `initializerExpression` to match implemented behavior.
+//
+// v0.37 Correct `libraryExport` to use `configurableUri`, not `uri`.
+//
+// v0.36 Update syntax from `inline class` to `extension type`, including
+// a special case of primary constructors.
+//
+// v0.35 Change named optional parameter syntax to require '=', that is,
+// remove the support for ':' as in `void f({int i: 1})`.
+//
+// v0.34 Add support for inline classes.
 //
 // v0.33 This commit does not change the derived language at all. It just
 // changes several rules to use the regexp-like grammar operators to simplify
@@ -71,7 +89,7 @@
 // `builtinIdentifier` and `reservedWord`; update `typeAlias` to enable
 // non-function type aliases; add missing `metadata` to formal parameter
 // declarations; correct `symbolLiteral` to allow `VOID`;
-
+//
 // v0.12 (82403371ac00ddf004be60fa7b705474d2864509) Cf. language issue #1341:
 // correct `metadata`. Change `qualifiedName` such that it only includes the
 // cases with a '.'; the remaining case is added where `qualifiedName` is used.
@@ -116,126 +134,128 @@
 // many grammar rule snippets. That grammar was then adjusted to remove
 // known issues (e.g., misplaced metadata) and to resolve ambiguities.
 
+// FAQ:
+// Q: How do I generate a parser?
+// A: Install ANTLR4 and run `antlr -Dlanguage=Dart <path to Dart.g4>`.
+//    See https://github.com/antlr/antlr4/blob/master/doc/dart-target.md
+//    for more info.
+
 grammar Dart;
 
-@parser::members {
-  String? filePath;
-  bool errorHasOccurred = false;
+@lexer::members {
+static const _BRACE_NORMAL = 1;
+static const _BRACE_SINGLE = 2;
+static const _BRACE_DOUBLE = 3;
+static const _BRACE_THREE_SINGLE = 4;
+static const _BRACE_THREE_DOUBLE = 5;
 
-  /// Must be invoked before the first error is reported for a library.
-  /// Will print the name of the library and indicate that it has errors.
-  void prepareForErrors() {
-    errorHasOccurred = true;
-    print("Syntax error in " + filePath! + ":");
-  }
+// Enable the parser to handle string interpolations via brace matching.
+// The top of the `_braceLevels` stack describes the most recent unmatched
+// '{'. This is needed in order to enable/disable certain lexer rules.
+//
+//   NORMAL: Most recent unmatched '{' was not string literal related.
+//   SINGLE: Most recent unmatched '{' was `'...${`.
+//   DOUBLE: Most recent unmatched '{' was `"...${`.
+//   THREE_SINGLE: Most recent unmatched '{' was `'''...${`.
+//   THREE_DOUBLE: Most recent unmatched '{' was `"""...${`.
+//
+// Access via functions below.
+final _braceLevels = <int>[];
 
-  /// Parse library, return true if success, false if errors occurred.
-  bool parseLibrary(String filePath) {
-    this.filePath = filePath;
-    errorHasOccurred = false;
-    libraryDefinition();
-    return !errorHasOccurred;
-  }
-
-  // Enable the parser to treat AWAIT/YIELD as keywords in the body of an
-  // `async`, `async*`, or `sync*` function. Access via methods below.
-  List<bool> asyncEtcAreKeywords = <bool>[false];
-
-  // Use this to indicate that we are now entering an `async`, `async*`,
-  // or `sync*` function.
-  void startAsyncFunction() { asyncEtcAreKeywords.add(true); }
-
-  // Use this to indicate that we are now entering a function which is
-  // neither `async`, `async*`, nor `sync*`.
-  void startNonAsyncFunction() { asyncEtcAreKeywords.add(false); }
-
-  // Use this to indicate that we are now leaving any funciton.
-  void endFunction() { asyncEtcAreKeywords.removeLast(); }
-
-  // Whether we can recognize AWAIT/YIELD as an identifier/typeIdentifier.
-  bool asyncEtcPredicate() {
-    final tokenId = currentToken.type;
-    if (tokenId == TOKEN_AWAIT || tokenId == TOKEN_YIELD) {
-      return !asyncEtcAreKeywords.last;
-    }
-    return false;
-  }
-
-  // Whether there's no skipped token between the previous and
-  // the current visible token.
-  bool isNoSkip() {
-    return tokenStream.LT(-1)!.stopIndex + 1 == tokenStream.LT(1)!.startIndex;
-  }
+// Whether we are currently in a string literal context, and which one.
+bool _currentBraceLevel(int braceLevel) {
+  if (_braceLevels.isEmpty) return false;
+  return _braceLevels.last == braceLevel;
 }
 
-@lexer::members{
-  static final int BRACE_NORMAL = 1;
-  static final int BRACE_SINGLE = 2;
-  static final int BRACE_DOUBLE = 3;
-  static final int BRACE_THREE_SINGLE = 4;
-  static final int BRACE_THREE_DOUBLE = 5;
+bool _currentBraceLevelNormal() {
+  return _currentBraceLevel(_BRACE_NORMAL);
+}
 
-  // Enable the parser to handle string interpolations via brace matching.
-  // The top of the `braceLevels` stack describes the most recent unmatched
-  // '{'. This is needed in order to enable/disable certain lexer rules.
-  //
-  //   NORMAL: Most recent unmatched '{' was not string literal related.
-  //   SINGLE: Most recent unmatched '{' was `'...${`.
-  //   DOUBLE: Most recent unmatched '{' was `"...${`.
-  //   THREE_SINGLE: Most recent unmatched '{' was `'''...${`.
-  //   THREE_DOUBLE: Most recent unmatched '{' was `"""...${`.
-  //
-  // Access via functions below.
-  List<int> braceLevels = <int>[];
+bool _currentBraceLevelSingleQuote() {
+  return _currentBraceLevel(_BRACE_SINGLE);
+}
 
-  // Whether we are currently in a string literal context, and which one.
-  bool currentBraceLevel(int braceLevel) {
-    if (braceLevels.isEmpty) return false;
-    return braceLevels.last == braceLevel;
-  }
-  bool currentBraceLevelNormal() {
-    return currentBraceLevel(BRACE_NORMAL);
-  }
-  bool currentBraceLevelSingleQuote() {
-    return currentBraceLevel(BRACE_SINGLE);
-  }
-  bool currentBraceLevelDoubleQuote() {
-    return currentBraceLevel(BRACE_DOUBLE);
-  }
-  bool currentBraceLevelThreeSingleQuotes() {
-    return currentBraceLevel(BRACE_THREE_SINGLE);
-  }
-  bool currentBraceLevelThreeDoubleQuotes() {
-    return currentBraceLevel(BRACE_THREE_DOUBLE);
-  }
+bool _currentBraceLevelDoubleQuote() {
+  return _currentBraceLevel(_BRACE_DOUBLE);
+}
 
-  // Use this to indicate that we are now entering a specific '{...}'.
-  // Call it after accepting the '{'.
-  void enterBrace() {
-    braceLevels.add(BRACE_NORMAL);
-  }
-  void enterBraceSingleQuote() {
-    braceLevels.add(BRACE_SINGLE);
-  }
-  void enterBraceDoubleQuote() {
-    braceLevels.add(BRACE_DOUBLE);
-  }
-  void enterBraceThreeSingleQuotes() {
-    braceLevels.add(BRACE_THREE_SINGLE);
-  }
-  void enterBraceThreeDoubleQuotes() {
-    braceLevels.add(BRACE_THREE_DOUBLE);
-  }
+bool _currentBraceLevelThreeSingleQuotes() {
+  return _currentBraceLevel(_BRACE_THREE_SINGLE);
+}
 
-  // Use this to indicate that we are now exiting a specific '{...}',
-  // no matter which kind. Call it before accepting the '}'.
-  void exitBrace() {
-      // We might raise a parse error here if the stack is empty, but the
-      // parsing rules should ensure that we get a parse error anyway, and
-      // it is not a big problem for the spec parser even if it misinterprets
-      // the brace structure of some programs with syntax errors.
-      if (!braceLevels.isEmpty) braceLevels.removeLast();
+bool _currentBraceLevelThreeDoubleQuotes() {
+  return _currentBraceLevel(_BRACE_THREE_DOUBLE);
+}
+
+// Use this to indicate that we are now entering a specific '{...}'.
+// Call it after accepting the '{'.
+void _enterBrace() {
+  _braceLevels.add(_BRACE_NORMAL);
+}
+
+void _enterBraceSingleQuote() {
+  _braceLevels.add(_BRACE_SINGLE);
+}
+
+void _enterBraceDoubleQuote() {
+  _braceLevels.add(_BRACE_DOUBLE);
+}
+
+void _enterBraceThreeSingleQuotes() {
+  _braceLevels.add(_BRACE_THREE_SINGLE);
+}
+
+void _enterBraceThreeDoubleQuotes() {
+  _braceLevels.add(_BRACE_THREE_DOUBLE);
+}
+
+// Use this to indicate that we are now exiting a specific '{...}',
+// no matter which kind. Call it before accepting the '}'.
+void _exitBrace() {
+  // We might raise a parse error here if the stack is empty, but the
+  // parsing rules should ensure that we get a parse error anyway, and
+  // it is not a big problem for the spec parser even if it misinterprets
+  // the brace structure of some programs with syntax errors.
+  if (!_braceLevels.isEmpty) _braceLevels.removeLast();
+}
+}
+
+@parser::members {
+static final String dspVersion = "v0.41";
+
+// Enable the parser to treat AWAIT/YIELD as keywords in the body of an
+// `async`, `async*`, or `sync*` function. Access via methods below.
+final _asyncEtcAreKeywords = <bool>[false];
+
+// Use this to indicate that we are now entering an `async`, `async*`,
+// or `sync*` function.
+void _startAsyncFunction() { _asyncEtcAreKeywords.add(true); }
+
+// Use this to indicate that we are now entering a function which is
+// neither `async`, `async*`, nor `sync*`.
+void _startNonAsyncFunction() { _asyncEtcAreKeywords.add(false); }
+
+// Use this to indicate that we are now leaving any funciton.
+void _endFunction() { _asyncEtcAreKeywords.removeLast(); }
+
+// Whether we can recognize AWAIT/YIELD as an identifier/typeIdentifier.
+bool _asyncEtcPredicate() {
+  final tokenId = currentToken.type;
+  if (tokenId == TOKEN_AWAIT || tokenId == TOKEN_YIELD) {
+    return !_asyncEtcAreKeywords.last;
   }
+  return false;
+}
+
+// Returns true if there is no skipped token between the previous
+// and the current visible token. A visible token is a token that
+// was not skipped.
+// This is used to implement the "noSkip" rule that prohibits
+// a "skip" rule from appearing between two visible tokens.
+bool isNoSkip() {
+  return tokenStream.LT(-1)!.stopIndex + 1 == tokenStream.LT(1)!.startIndex;
+}
 }
 
 // ---------------------------------------- Grammar rules.
@@ -257,6 +277,7 @@ libraryDefinition
 topLevelDefinition
     :    classDeclaration
     |    mixinDeclaration
+    |    extensionTypeDeclaration
     |    extensionDeclaration
     |    enumType
     |    typeAlias
@@ -306,12 +327,13 @@ functionSignature
     ;
 
 functionBody
-    :    '=>' { startNonAsyncFunction(); } expression { endFunction(); } ';'
-    |    { startNonAsyncFunction(); } block { endFunction(); }
+    :    '=>' { _startNonAsyncFunction(); } expression { _endFunction(); } ';'
+    |    { _startNonAsyncFunction(); } block { _endFunction(); }
     |    ASYNC '=>'
-         { startAsyncFunction(); } expression { endFunction(); } ';'
+         { _startAsyncFunction(); } expression { _endFunction(); } ';'
     |    (ASYNC | ASYNC '*' | SYNC '*')
-         { startAsyncFunction(); } block { endFunction(); }
+         { _startAsyncFunction(); } block { _endFunction(); }
+    |    NATIVE ';'
     ;
 
 block
@@ -381,7 +403,7 @@ defaultFormalParameter
     ;
 
 defaultNamedParameter
-    :    metadata REQUIRED? normalFormalParameterNoMetadata ((':' | '=') expression)?
+    :    metadata REQUIRED? normalFormalParameterNoMetadata ('=' expression)?
     ;
 
 typeWithParameters
@@ -390,7 +412,7 @@ typeWithParameters
 
 classDeclaration
     :    (classModifiers | mixinClassModifiers)
-         CLASS typeWithParameters superclass? interfaces?
+         CLASS (typeWithParameters | FUNCTION) superclass? interfaces?
          LBRACE (metadata classMemberDeclaration)* RBRACE
     |    classModifiers CLASS mixinApplicationClass
     ;
@@ -444,8 +466,25 @@ mixinMemberDeclaration
     :    classMemberDeclaration
     ;
 
+extensionTypeDeclaration
+    :    EXTENSION TYPE CONST? typeWithParameters
+         representationDeclaration
+         interfaces?
+         LBRACE (metadata extensionTypeMemberDeclaration)* RBRACE
+    ;
+
+representationDeclaration
+    :    ('.' identifierOrNew)? '(' metadata type identifier ')'
+    ;
+
+
+// TODO: We might want to make this more strict.
+extensionTypeMemberDeclaration
+    :    classMemberDeclaration
+    ;
+
 extensionDeclaration
-    :    EXTENSION identifier? typeParameters? ON type
+    :    EXTENSION typeIdentifierNotType? typeParameters? ON type
          LBRACE (metadata extensionMemberDefinition)* RBRACE
     ;
 
@@ -500,10 +539,9 @@ operatorSignature
 operator
     :    '~'
     |    binaryOperator
-    |    '[' { isNoSkip() }? ']'
-    |    '[' { isNoSkip() }? ']' { isNoSkip() }? '='
+    |    '[' ']'
+    |    '[' ']' '='
     ;
-
 
 binaryOperator
     :    multiplicativeOperator
@@ -646,7 +684,7 @@ primary
 
 constructorInvocation
     :    typeName typeArguments '.' NEW arguments
-    |    typeName               '.' NEW arguments
+    |    typeName '.' NEW arguments
     ;
 
 literal
@@ -759,8 +797,8 @@ functionExpression
     ;
 
 functionExpressionBody
-    :    '=>' { startNonAsyncFunction(); } expression { endFunction(); }
-    |    ASYNC '=>' { startAsyncFunction(); } expression { endFunction(); }
+    :    '=>' { _startNonAsyncFunction(); } expression { _endFunction(); }
+    |    ASYNC '=>' { _startAsyncFunction(); } expression { _endFunction(); }
     ;
 
 functionExpressionWithoutCascade
@@ -768,10 +806,10 @@ functionExpressionWithoutCascade
     ;
 
 functionExpressionWithoutCascadeBody
-    :    '=>' { startNonAsyncFunction(); }
-         expressionWithoutCascade { endFunction(); }
-    |    ASYNC '=>' { startAsyncFunction(); }
-         expressionWithoutCascade { endFunction(); }
+    :    '=>' { _startNonAsyncFunction(); }
+         expressionWithoutCascade { _endFunction(); }
+    |    ASYNC '=>' { _startAsyncFunction(); }
+         expressionWithoutCascade { _endFunction(); }
     ;
 
 functionPrimary
@@ -779,9 +817,9 @@ functionPrimary
     ;
 
 functionPrimaryBody
-    :    { startNonAsyncFunction(); } block { endFunction(); }
+    :    { _startNonAsyncFunction(); } block { _endFunction(); }
     |    (ASYNC | ASYNC '*' | SYNC '*')
-         { startAsyncFunction(); } block { endFunction(); }
+         { _startAsyncFunction(); } block { _endFunction(); }
     ;
 
 thisExpression
@@ -823,8 +861,9 @@ cascadeSelector
     ;
 
 cascadeSectionTail
-    :                                  cascadeAssignment
-    |    selector* (assignableSelector cascadeAssignment)?
+    :                                 cascadeAssignment
+    |    selector* assignableSelector cascadeAssignment
+    |    selector*
     ;
 
 cascadeAssignment
@@ -844,8 +883,8 @@ compoundAssignmentOperator
     |    '+='
     |    '-='
     |    '<<='
-    |    '>' { isNoSkip() }? '>' { isNoSkip() }? '>' { isNoSkip() }? '='
-    |    '>' { isNoSkip() }? '>' { isNoSkip() }? '='
+    |    '>' '>' '>' '='
+    |    '>' '>' '='
     |    '&='
     |    '^='
     |    '|='
@@ -880,13 +919,25 @@ equalityOperator
     ;
 
 relationalExpression
-    :    bitwiseOrExpression
-         (typeTest | typeCast | relationalOperator bitwiseOrExpression)?
-    |    SUPER relationalOperator bitwiseOrExpression
+    :    bitwiseOrExpression typeOperatorTail
+    |    bitwiseOrExpression                  relationalOperatorTail
+    |    bitwiseOrExpression typeOperatorTail relationalOperatorTail
+    |    bitwiseOrExpression                  relationalOperatorTail typeOperatorTail
+    |    bitwiseOrExpression
+    |    SUPER relationalOperatorTail
+    ;
+
+typeOperatorTail
+    :    typeTest
+    |    typeCast
+    ;
+
+relationalOperatorTail
+    :    relationalOperator bitwiseOrExpression
     ;
 
 relationalOperator
-    :    '>' { (){ print("SHIFTEQ ${isNoSkip()}"); return isNoSkip(); }() }? '='
+    :    '>' '='
     |    '>'
     |    '<='
     |    '<'
@@ -920,8 +971,8 @@ shiftExpression
 
 shiftOperator
     :    '<<'
-    |    '>' { isNoSkip() }? '>' { isNoSkip() }? '>'
-    |    '>' { (){ print("SHIFT SHIFT: ${isNoSkip()}"); return isNoSkip(); }() }? '>'
+    |    '>' '>' '>'
+    |    '>' '>'
     ;
 
 additiveExpression
@@ -1026,19 +1077,24 @@ identifier
     :    IDENTIFIER
     |    builtInIdentifier
     |    otherIdentifier
-    |    { asyncEtcPredicate() }? (AWAIT|YIELD)
+    |    { _asyncEtcPredicate() }? (AWAIT|YIELD)
     ;
 
 qualifiedName
-    :                       typeIdentifier '.' identifierOrNew
+    :    typeIdentifier '.' identifierOrNew
     |    typeIdentifier '.' typeIdentifier '.' identifierOrNew
     ;
 
-typeIdentifier
+typeIdentifierNotType
     :    IDENTIFIER
     |    DYNAMIC // Built-in identifier that can be used as a type.
-    |    otherIdentifier // Occur in grammar rules, are not built-in.
-    |    { asyncEtcPredicate() }? (AWAIT|YIELD)
+    |    otherIdentifierNotType // Occur in grammar rules, are not built-in.
+    |    { _asyncEtcPredicate() }? (AWAIT|YIELD)
+    ;
+
+typeIdentifier
+    :    typeIdentifierNotType
+    |    TYPE
     ;
 
 typeTest
@@ -1112,8 +1168,8 @@ constantPattern
     |    identifier
     |    qualifiedName
     |    constObjectExpression
-    |    CONST typeArguments? '[' elements? ']' // const List of elements
-    |    CONST typeArguments? LBRACE elements? RBRACE // const setormap of elements
+    |    CONST typeArguments? '[' elements? ']'
+    |    CONST typeArguments? LBRACE elements? RBRACE
     |    CONST '(' expression ')'
     ;
 
@@ -1168,7 +1224,7 @@ patternField
     ;
 
 objectPattern
-    :    typeName typeArguments? '(' patternFields? ')'
+    :    (typeName typeArguments? | typeNamedFunction) '(' patternFields? ')'
     ;
 
 patternVariableDeclaration
@@ -1361,7 +1417,7 @@ libraryImport
     ;
 
 importSpecification
-    :    IMPORT configurableUri (DEFERRED? AS identifier)? combinator* ';'
+    :    IMPORT configurableUri (DEFERRED? AS typeIdentifier)? combinator* ';'
     ;
 
 combinator
@@ -1374,7 +1430,7 @@ identifierList
     ;
 
 libraryExport
-    :    metadata EXPORT uri combinator* ';'
+    :    metadata EXPORT configurableUri combinator* ';'
     ;
 
 partDirective
@@ -1422,9 +1478,13 @@ typeNotFunction
     |    VOID
     ;
 
+typeNamedFunction
+    :    (typeIdentifier '.')? FUNCTION
+    ;
+
 typeNotVoidNotFunction
     :    typeName typeArguments?
-    |    (typeIdentifier '.')? FUNCTION
+    |    typeNamedFunction
     ;
 
 typeName
@@ -1625,7 +1685,7 @@ builtInIdentifier
     |    TYPEDEF
     ;
 
-otherIdentifier
+otherIdentifierNotType
     :    ASYNC
     |    BASE
     |    HIDE
@@ -1635,6 +1695,12 @@ otherIdentifier
     |    SHOW
     |    SYNC
     |    WHEN
+    |    NATIVE
+    ;
+
+otherIdentifier
+    :    otherIdentifierNotType
+    |    TYPE
     ;
 
 // ---------------------------------------- Lexer rules.
@@ -1934,8 +2000,16 @@ SYNC
     :    'sync'
     ;
 
+TYPE
+    :    'type'
+    ;
+
 WHEN
     :    'when'
+    ;
+
+NATIVE
+    :    'native'
     ;
 
 // Lexical tokens that are not words.
@@ -2003,18 +2077,18 @@ SINGLE_LINE_STRING_SQ_BEGIN_END
     ;
 
 SINGLE_LINE_STRING_SQ_BEGIN_MID
-    :    '\'' STRING_CONTENT_SQ* '${' { enterBraceSingleQuote(); }
+    :    '\'' STRING_CONTENT_SQ* '${' { _enterBraceSingleQuote(); }
     ;
 
 SINGLE_LINE_STRING_SQ_MID_MID
-    :    { currentBraceLevelSingleQuote() }?
-         { exitBrace(); } '}' STRING_CONTENT_SQ* '${'
-         { enterBraceSingleQuote(); }
+    :    { _currentBraceLevelSingleQuote() }?
+         { _exitBrace(); } '}' STRING_CONTENT_SQ* '${'
+         { _enterBraceSingleQuote(); }
     ;
 
 SINGLE_LINE_STRING_SQ_MID_END
-    :    { currentBraceLevelSingleQuote() }?
-         { exitBrace(); } '}' STRING_CONTENT_SQ* '\''
+    :    { _currentBraceLevelSingleQuote() }?
+         { _exitBrace(); } '}' STRING_CONTENT_SQ* '\''
     ;
 
 fragment
@@ -2028,18 +2102,18 @@ SINGLE_LINE_STRING_DQ_BEGIN_END
     ;
 
 SINGLE_LINE_STRING_DQ_BEGIN_MID
-    :    '"' STRING_CONTENT_DQ* '${' { enterBraceDoubleQuote(); }
+    :    '"' STRING_CONTENT_DQ* '${' { _enterBraceDoubleQuote(); }
     ;
 
 SINGLE_LINE_STRING_DQ_MID_MID
-    :    { currentBraceLevelDoubleQuote() }?
-         { exitBrace(); } '}' STRING_CONTENT_DQ* '${'
-         { enterBraceDoubleQuote(); }
+    :    { _currentBraceLevelDoubleQuote() }?
+         { _exitBrace(); } '}' STRING_CONTENT_DQ* '${'
+         { _enterBraceDoubleQuote(); }
     ;
 
 SINGLE_LINE_STRING_DQ_MID_END
-    :    { currentBraceLevelDoubleQuote() }?
-         { exitBrace(); } '}' STRING_CONTENT_DQ* '"'
+    :    { _currentBraceLevelDoubleQuote() }?
+         { _exitBrace(); } '}' STRING_CONTENT_DQ* '"'
     ;
 
 fragment
@@ -2065,18 +2139,18 @@ MULTI_LINE_STRING_SQ_BEGIN_END
 
 MULTI_LINE_STRING_SQ_BEGIN_MID
     :    '\'\'\'' STRING_CONTENT_TSQ* QUOTES_SQ '${'
-         { enterBraceThreeSingleQuotes(); }
+         { _enterBraceThreeSingleQuotes(); }
     ;
 
 MULTI_LINE_STRING_SQ_MID_MID
-    :    { currentBraceLevelThreeSingleQuotes() }?
-         { exitBrace(); } '}' STRING_CONTENT_TSQ* QUOTES_SQ '${'
-         { enterBraceThreeSingleQuotes(); }
+    :    { _currentBraceLevelThreeSingleQuotes() }?
+         { _exitBrace(); } '}' STRING_CONTENT_TSQ* QUOTES_SQ '${'
+         { _enterBraceThreeSingleQuotes(); }
     ;
 
 MULTI_LINE_STRING_SQ_MID_END
-    :    { currentBraceLevelThreeSingleQuotes() }?
-         { exitBrace(); } '}' STRING_CONTENT_TSQ* '\'\'\''
+    :    { _currentBraceLevelThreeSingleQuotes() }?
+         { _exitBrace(); } '}' STRING_CONTENT_TSQ* '\'\'\''
     ;
 
 fragment
@@ -2101,26 +2175,26 @@ MULTI_LINE_STRING_DQ_BEGIN_END
 
 MULTI_LINE_STRING_DQ_BEGIN_MID
     :    '"""' STRING_CONTENT_TDQ* QUOTES_DQ '${'
-         { enterBraceThreeDoubleQuotes(); }
+         { _enterBraceThreeDoubleQuotes(); }
     ;
 
 MULTI_LINE_STRING_DQ_MID_MID
-    :    { currentBraceLevelThreeDoubleQuotes() }?
-         { exitBrace(); } '}' STRING_CONTENT_TDQ* QUOTES_DQ '${'
-         { enterBraceThreeDoubleQuotes(); }
+    :    { _currentBraceLevelThreeDoubleQuotes() }?
+         { _exitBrace(); } '}' STRING_CONTENT_TDQ* QUOTES_DQ '${'
+         { _enterBraceThreeDoubleQuotes(); }
     ;
 
 MULTI_LINE_STRING_DQ_MID_END
-    :    { currentBraceLevelThreeDoubleQuotes() }?
-         { exitBrace(); } '}' STRING_CONTENT_TDQ* '"""'
+    :    { _currentBraceLevelThreeDoubleQuotes() }?
+         { _exitBrace(); } '}' STRING_CONTENT_TDQ* '"""'
     ;
 
 LBRACE
-    :    '{' { enterBrace(); }
+    :    '{' { _enterBrace(); }
     ;
 
 RBRACE
-    :    { currentBraceLevelNormal() }? { exitBrace(); } '}'
+    :    { _currentBraceLevelNormal() }? { _exitBrace(); } '}'
     ;
 
 fragment
@@ -2160,16 +2234,14 @@ IDENTIFIER
     :    IDENTIFIER_START IDENTIFIER_PART*
     ;
 
-SKIPPABLE
-    :    (SINGLE_LINE_COMMENT | MULTI_LINE_COMMENT | WS) { skip(); }
-    ;
-
 SINGLE_LINE_COMMENT
     :    '//' (~('\r' | '\n'))* NEWLINE?
+         { skip(); }
     ;
 
 MULTI_LINE_COMMENT
     :    '/*' (MULTI_LINE_COMMENT | .)*? '*/'
+         { skip(); }
     ;
 
 fragment
@@ -2183,4 +2255,5 @@ FEFF
 
 WS
     :    (' ' | '\t' | '\r' | '\n')+
+         { skip(); }
     ;

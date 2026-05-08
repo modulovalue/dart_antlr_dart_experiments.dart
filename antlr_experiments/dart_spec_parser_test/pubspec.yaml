@@ -1,0 +1,5 @@
+name: dart_spec_parser_test
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+dependencies:
+  antlr4: ^4.13.2

@@ -7,6 +7,7 @@ environment:
 dependencies:
   antlr4: ^4.12.0
   analyzer: ^5.13.0
+  watcher: 1.1.1
 
 dev_dependencies:
   extra_pedantic: ^2.0.0

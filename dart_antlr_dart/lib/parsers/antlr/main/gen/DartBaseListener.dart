@@ -316,6 +316,30 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterExtensionTypeDeclaration(ExtensionTypeDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitExtensionTypeDeclaration(ExtensionTypeDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRepresentationDeclaration(RepresentationDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRepresentationDeclaration(RepresentationDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterExtensionTypeMemberDeclaration(ExtensionTypeMemberDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitExtensionTypeMemberDeclaration(ExtensionTypeMemberDeclarationContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterExtensionDeclaration(ExtensionDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
@@ -972,6 +996,22 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterTypeOperatorTail(TypeOperatorTailContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitTypeOperatorTail(TypeOperatorTailContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterRelationalOperatorTail(RelationalOperatorTailContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitRelationalOperatorTail(RelationalOperatorTailContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterRelationalOperator(RelationalOperatorContext ctx) {}
 
   /// The default implementation does nothing.
@@ -1193,6 +1233,14 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitQualifiedName(QualifiedNameContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterTypeIdentifierNotType(TypeIdentifierNotTypeContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitTypeIdentifierNotType(TypeIdentifierNotTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1836,6 +1884,14 @@ class DartBaseListener implements DartListener {
 
   /// The default implementation does nothing.
   @override
+  void enterTypeNamedFunction(TypeNamedFunctionContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitTypeNamedFunction(TypeNamedFunctionContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
   void enterTypeNotVoidNotFunction(TypeNotVoidNotFunctionContext ctx) {}
 
   /// The default implementation does nothing.
@@ -2073,6 +2129,14 @@ class DartBaseListener implements DartListener {
   /// The default implementation does nothing.
   @override
   void exitBuiltInIdentifier(BuiltInIdentifierContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void enterOtherIdentifierNotType(OtherIdentifierNotTypeContext ctx) {}
+
+  /// The default implementation does nothing.
+  @override
+  void exitOtherIdentifierNotType(OtherIdentifierNotTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
